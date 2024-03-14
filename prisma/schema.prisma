@@ -12,3 +12,163 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Kategori {
+  id        String   @id @default(uuid())
+  kategori  String   @db.VarChar(50)
+  slug      String   @db.VarChar(60)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  produk Produk[]
+
+  @@map("kategori")
+}
+
+model Produk {
+  id        String   @id @default(uuid())
+  nama      String   @db.VarChar(150)
+  harga     Int
+  gambar    String   @db.VarChar(150)
+  deskripsi String   @db.Text()
+  slug      String   @db.VarChar(250)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  kategori    Kategori      @relation(fields: [kategori_id], references: [id])
+  kategori_id String
+  user        User          @relation(fields: [user_id], references: [id])
+  user_id     String
+  keranjang   Keranjang[]
+  orderdetail OrderDetail[]
+
+  @@map("produk")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  nama      String   @db.VarChar(150)
+  email     String   @db.VarChar(150)
+  phone     String   @db.VarChar(30)
+  password  String   @db.VarChar(150)
+  role      String   @db.VarChar(150)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  produk      Produk[]
+  order       Order[]
+  keranjang   Keranjang[]
+  orderdetail OrderDetail[]
+  rating      Rating[]
+  wedingdream WedingDream[]
+  bid Bid[]
+  @@map("user")
+}
+
+model Keranjang {
+  id        String   @id @default(uuid())
+  user      User     @relation(fields: [user_id], references: [id])
+  user_id   String
+  produk    Produk   @relation(fields: [produk_id], references: [id])
+  produk_id String
+  qty       Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("keranjang")
+}
+
+model Order {
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [user_id], references: [id])
+  user_id    String
+  date_order DateTime @default(now())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  orderdetail OrderDetail[]
+
+  @@map("order")
+}
+
+model OrderDetail {
+  id         String   @id @default(uuid())
+  order      Order    @relation(fields: [order_id], references: [id])
+  order_id   String
+  produk     Produk   @relation(fields: [produk_id], references: [id])
+  produk_id  String
+  date_order DateTime @default(now())
+  user       User     @relation(fields: [user_id], references: [id])
+  user_id    String
+  status     String   @db.Char(1)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("orderdetail")
+}
+
+model Rating {
+  id String @id @default(uuid())
+
+  user      User     @relation(fields: [user_id], references: [id])
+  user_id   String
+  rate      Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("rating")
+}
+
+model WedingDream {
+  id String @id @default(uuid())
+
+  user      User     @relation(fields: [user_id], references: [id])
+  user_id   String
+  judul     String   @db.VarChar(150)
+  budget    Int
+  slug      String   @db.VarChar(250)
+  status    String   @db.Char(1)
+  deskripsi String   @db.Text()
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bid Bid[]
+  orderdream OrderDream[]
+
+  @@map("wedingdream")
+}
+
+model Bid {
+  id String @id @default(uuid())
+
+  wedingdream     WedingDream @relation(fields: [weding_dream_id], references: [id])
+  weding_dream_id String
+
+  nama      String @db.VarChar(150)
+  harga     Int
+  deskripsi String @db.Text()
+  user      User     @relation(fields: [user_id], references: [id])
+  user_id   String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orderdream OrderDream[]
+
+
+  @@map("bid")
+}
+
+
+model OrderDream {
+  id String @id @default(uuid())
+  wedingdream     WedingDream @relation(fields: [weding_dream_id], references: [id])
+  weding_dream_id String
+  bid     Bid @relation(fields: [bid_id], references: [id])
+  bid_id String
+  status     String   @db.Char(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("orderdream")
+}
