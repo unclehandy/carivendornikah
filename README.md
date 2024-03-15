@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Description
+This is a repository of carivendornikah as a final assignment required to pass Devscale.id bootcamp. This repository is managed by Devgenius team.
 
-## Getting Started
+## How to use
+Please follow the steps below to run the project.
 
-First, run the development server:
+``npm install``
+``npm run dev``
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## How to contribute
+### UI Design
+- Start with creating frontend UI before functionality
+- Use DaisyUI for UI components
+- Use TailwindCSS for styling
+- DO NOT use any other UI library
+### Functionality
+- Create a new branch for each feature
+- Commit with meaningful message (refer to format)
+- Create a pull request for each feature
+- DO NOT merge your own pull request
+- Plese run ``npm run build`` first before pushing your code. Make sure that it does not throw error
+## Commit Message Format
+You have to follow the following format for commit message.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+``git commit -m "type: subject"``
+#### Type
+Must be one of the following:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- feat: A new feature
+- fix: A bug fix
+- chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
+#### Subject
+The subject contains succinct description of the change:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- use the imperative, present tense: “change” not “changed” nor “changes”
+- don't capitalize first letter
+- no dot (.) at the end
+##### Examples
+``git commit -m "feat: add login page"``
+``git commit -m "fix: login page not working"``
+``git commit -m "chore: update readme"``
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
