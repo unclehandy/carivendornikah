@@ -1,0 +1,26 @@
+### get all data from api 
+GET http://localhost:3000/api/kategori
+
+
+### post data api 
+POST http://localhost:3000/api/kategori
+
+{
+    "kategori": "Nama Kategori"
+}
+
+
+### delete data api 
+DELETE http://localhost:3000/api/kategori/VbfZpNmZiYcE0yj5Woyl1
+
+
+### find data api 
+GET http://localhost:3000/api/kategori/1
+
+
+### update data api 
+PATCH http://localhost:3000/api/kategori/1
+
+{
+   "kategori": "weding cinta"
+}
