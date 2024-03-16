@@ -8,8 +8,8 @@ POST http://localhost:3000/api/produk
 {
     "nama": "Potograper Weding",
     "harga": 1000000,
-    "kategori_id": "1",
-    "user_id":"1",
+     "kategori_id": "eLW5iUh1s443adagmnOZq",
+    "user_id": "57734da9-16d1-4a86-a1a6-710358e77659",
     "gambar": "https://images.squarespace-cdn.com/content/v1/5a1dda174c326df2710b8e91/1546389022382-R018EAQGVHKD77NNTCOU/bay-area-wedding-photography.jpg",
     "deskripsi": "Mari abadikan momen berharga pernikahan Anda dengan sempurna bersama kami! Sebagai fotografer pernikahan berpengalaman, kami menghadirkan layanan fotografi yang berfokus pada kualitas, kreativitas, dan kehangatan emosi.Dengan pengalaman bertahun-tahun di industri ini, kami memahami betapa pentingnya setiap momen dalam pernikahan Anda. Dari senyuman kecil hingga momen emosional yang tak terlupakan, kami berkomitmen untuk menangkap setiap detail dengan indah dan autentik."
 }
@@ -20,12 +20,17 @@ DELETE http://localhost:3000/api/produk/VbfZpNmZiYcE0yj5Woyl1
 
 
 ### find data api 
-GET http://localhost:3000/api/produk/1
+GET http://localhost:3000/api/produk/LXwXQ0tnrcb7bWZZ4J3Qn
 
 
 ### update data api 
-PATCH http://localhost:3000/api/produk/1
+PATCH http://localhost:3000/api/produk/LXwXQ0tnrcb7bWZZ4J3Qn
 
 {
-   "produk": "weding cinta"
+  "nama": "Potograper Weding 2",
+    "harga": 1000000,
+    "kategori_id": "1",
+    "user_id":"a33ab4a3-4058-46a0-bfc6-1bb8c95bac4d",
+    "gambar": "https://images.squarespace-cdn.com/content/v1/5a1dda174c326df2710b8e91/1546389022382-R018EAQGVHKD77NNTCOU/bay-area-wedding-photography.jpg",
+    "deskripsi": "Mari abadikan momen berharga pernikahan Anda dengan sempurna bersama kami! Sebagai fotografer pernikahan berpengalaman, kami menghadirkan layanan fotografi yang berfokus pada kualitas, kreativitas, dan kehangatan emosi.Dengan pengalaman bertahun-tahun di industri ini, kami memahami betapa pentingnya setiap momen dalam pernikahan Anda. Dari senyuman kecil hingga momen emosional yang tak terlupakan, kami berkomitmen untuk menangkap setiap detail dengan indah dan autentik."
 }

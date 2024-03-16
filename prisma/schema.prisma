@@ -70,6 +70,7 @@ model Keranjang {
   user      User     @relation(fields: [user_id], references: [id])
   user_id   String
   produk    Produk   @relation(fields: [produk_id], references: [id])
+  stat     String   @db.VarChar(5)
   produk_id String
   qty       Int
   createdAt DateTime @default(now())
@@ -82,7 +83,7 @@ model Order {
   id         String   @id @default(uuid())
   user       User     @relation(fields: [user_id], references: [id])
   user_id    String
-  date_order DateTime @default(now())
+  date_order DateTime 
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
@@ -100,7 +101,8 @@ model OrderDetail {
   date_order DateTime @default(now())
   user       User     @relation(fields: [user_id], references: [id])
   user_id    String
-  status     String   @db.Char(1)
+  stat     String   @db.VarChar(5)
+  qty       Int
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 

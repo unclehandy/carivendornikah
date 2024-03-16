@@ -6,7 +6,7 @@ GET http://localhost:3000/api/kategori
 POST http://localhost:3000/api/kategori
 
 {
-    "kategori": "Nama Kategori"
+    "kategori": "potograper"
 }
 
 

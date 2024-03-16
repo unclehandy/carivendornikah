@@ -1,0 +1,35 @@
+### get all data from api 
+GET http://localhost:3000/api/keranjang
+
+
+### get all user by role from api 
+GET http://localhost:3000/api/keranjang?role=vendor
+
+### post data api 
+POST http://localhost:3000/api/keranjang
+
+{
+  "user_id": "57734da9-16d1-4a86-a1a6-710358e77659",
+  "produk_id": "k35rCONu5_D5HvRDPwQxv",
+  "status":"no",
+  "qty": 1
+ 
+}
+
+
+### delete data api 
+DELETE http://localhost:3000/api/keranjang/iiaNSCuwfXnNcoBVV4aee
+
+
+### find data api 
+GET http://localhost:3000/api/keranjang/iiaNSCuwfXnNcoBVV4aee
+
+
+### update data api 
+PATCH http://localhost:3000/api/keranjang/iiaNSCuwfXnNcoBVV4aee
+
+{
+    "user_id":"a33ab4a3-4058-46a0-bfc6-1bb8c95bac4d",
+    "qty":2,
+    "produk_id":"LXwXQ0tnrcb7bWZZ4J3Qn"
+}

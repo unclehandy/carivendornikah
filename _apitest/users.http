@@ -18,16 +18,16 @@ POST http://localhost:3000/api/users
 
 
 ### delete data api 
-DELETE http://localhost:3000/api/kategori/VbfZpNmZiYcE0yj5Woyl1
+DELETE http://localhost:3000/api/users/873d1070-7517-4435-9922-a06ae5a72afe
 
 
 ### find data api 
-GET http://localhost:3000/api/kategori/1
+GET http://localhost:3000/api/users/873d1070-7517-4435-9922-a06ae5a72afe
 
 
 ### update data api 
-PATCH http://localhost:3000/api/kategori/1
+PATCH http://localhost:3000/api/users/873d1070-7517-4435-9922-a06ae5a72afe
 
 {
-   "kategori": "weding cinta"
+   "nama": "M Fikry Haykal"
 }
