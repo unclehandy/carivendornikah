@@ -9,25 +9,33 @@ GET http://localhost:3000/api/users?role=vendor
 POST http://localhost:3000/api/users
 
 {
-    "nama": "fikry haykal",
-    "email": "fikryhaykal@gmail.com",
-    "password": "123456",
-    "phone" :"0811007008",
+    "nama": "noname",
+    "email": "noname@gmail.com",
+    "password": "0908076",
+    "phone" :"0888999999",
     "role" : "vendor"
 }
 
+###get user by id
+GET http://localhost:3000/api/users/e9ef6ab6-4284-4a1b-bc00-9189bd09e720
 
-### delete data api 
-DELETE http://localhost:3000/api/kategori/VbfZpNmZiYcE0yj5Woyl1
-
-
-### find data api 
-GET http://localhost:3000/api/kategori/1
+### delete data user api
+DELETE http://localhost:3000/api/users/c4f69c91-d331-4e27-92a7-ab2745291402
 
 
 ### update data api 
-PATCH http://localhost:3000/api/kategori/1
+PATCH http://localhost:3000/api/users/b3acef83-924f-46b8-8bbf-c37daf2208f8
 
 {
-   "kategori": "weding cinta"
+    "nama": "noname-bro",
+    "email": "noname@gmail.com"
+}
+
+
+### login
+POST http://localhost:3000/api/users/login
+
+{
+    "email": "surel.ronal@gmail.com",
+    "password": "123456"
 }
