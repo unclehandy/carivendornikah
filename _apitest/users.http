@@ -1,0 +1,33 @@
+### get all data from api 
+GET http://localhost:3000/api/users
+
+
+### get all user by role from api 
+GET http://localhost:3000/api/users?role=vendor
+
+### post data api 
+POST http://localhost:3000/api/users
+
+{
+    "nama": "fikry haykal",
+    "email": "fikryhaykal@gmail.com",
+    "password": "123456",
+    "phone" :"0811007008",
+    "role" : "vendor"
+}
+
+
+### delete data api 
+DELETE http://localhost:3000/api/kategori/VbfZpNmZiYcE0yj5Woyl1
+
+
+### find data api 
+GET http://localhost:3000/api/kategori/1
+
+
+### update data api 
+PATCH http://localhost:3000/api/kategori/1
+
+{
+   "kategori": "weding cinta"
+}
