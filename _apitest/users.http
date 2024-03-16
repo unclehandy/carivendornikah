@@ -31,3 +31,11 @@ PATCH http://localhost:3000/api/users/873d1070-7517-4435-9922-a06ae5a72afe
 {
    "nama": "M Fikry Haykal"
 }
+
+###tes login
+POST http://localhost:3000/api/users/login
+
+{
+    "email": "surel.ronal@gmail.com",
+    "password": "123456"
+}

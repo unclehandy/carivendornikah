@@ -48,7 +48,7 @@ model Produk {
 model User {
   id        String   @id @default(uuid())
   nama      String   @db.VarChar(150)
-  email     String   @db.VarChar(150)
+  email     String   @unique @db.VarChar(150)
   phone     String   @db.VarChar(30)
   password  String   @db.VarChar(150)
   role      String   @db.VarChar(150)

@@ -1,4 +1,4 @@
-import prisma from "@/utils/prisma";
+import { prisma } from "@/utils/prisma";
 import { NextResponse } from "next/server";
 
 import bcrypt from "bcrypt";
@@ -38,10 +38,11 @@ export async function POST(req) {
     // Jika password cocok, kirim data user
     const payload = {
       id: findUser.id,
-      firstName: findUser.firstName,
-      lastName: findUser.lastName,
-      username: findUser.username,
+      nama: findUser.nama,
       email: findUser.email,
+      phone: findUser.phone,
+      password: findUser.password,
+      role: findUser.role
     };
 
     // Buat token
