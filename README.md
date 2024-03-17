@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Description
 This is a repository of carivendornikah as a final assignment required to pass Devscale.id bootcamp. This repository is managed by Devgenius team.
 
@@ -39,4 +40,3 @@ The subject contains succinct description of the change:
 ``git commit -m "feat: add login page"``
 ``git commit -m "fix: login page not working"``
 ``git commit -m "chore: update readme"``
-
