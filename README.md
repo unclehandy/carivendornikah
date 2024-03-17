@@ -39,4 +39,3 @@ The subject contains succinct description of the change:
 ``git commit -m "feat: add login page"``
 ``git commit -m "fix: login page not working"``
 ``git commit -m "chore: update readme"``
-

@@ -1,0 +1,34 @@
+### get all data from api 
+GET http://localhost:3000/api/bid
+
+
+### get all user by role from api 
+GET http://localhost:3000/api/bid?role=vendor
+
+### post data api 
+POST http://localhost:3000/api/bid
+
+{
+    "weding_dream_id": "t0nqIERCRanXQ5VlDqx-6",
+    "user_id": "57734da9-16d1-4a86-a1a6-710358e77659",
+    "nama": "Your Name",
+    "harga": 5000,
+    "deskripsi": "Your Deskripsi"
+   
+}
+
+
+### delete data api 
+DELETE http://localhost:3000/api/bid/873d1070-7517-4435-9922-a06ae5a72afe
+
+
+### find data api 
+GET http://localhost:3000/api/bid/873d1070-7517-4435-9922-a06ae5a72afe
+
+
+### update data api 
+PATCH http://localhost:3000/api/bid/873d1070-7517-4435-9922-a06ae5a72afe
+
+{
+   "nama": "M Fikry Haykal"
+}

@@ -1,0 +1,30 @@
+### get all data from api 
+GET http://localhost:3000/api/orderdream
+
+
+### get all user by role from api 
+GET http://localhost:3000/api/orderdream?role=vendor
+
+### post data api 
+POST http://localhost:3000/api/orderdream
+
+{
+    "bid_id": "eDg8_90Kf-WQBJceIPRwu",
+    "weding_dream_id": "t0nqIERCRanXQ5VlDqx-6",
+    "status": "Y"
+}
+
+### delete data api 
+DELETE http://localhost:3000/api/orderdream/873d1070-7517-4435-9922-a06ae5a72afe
+
+
+### find data api 
+GET http://localhost:3000/api/orderdream/873d1070-7517-4435-9922-a06ae5a72afe
+
+
+### update data api 
+PATCH http://localhost:3000/api/orderdream/873d1070-7517-4435-9922-a06ae5a72afe
+
+{
+   "nama": "M Fikry Haykal"
+}

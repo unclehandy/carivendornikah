@@ -1,0 +1,31 @@
+### get all data from api 
+GET http://localhost:3000/api/order
+
+
+### get all user by role from api 
+GET http://localhost:3000/api/order?role=vendor
+
+### post data api 
+POST http://localhost:3000/api/order
+
+{
+    "user_id": "57734da9-16d1-4a86-a1a6-710358e77659",
+    "date_order": "2024-03-23T12:00:00Z"
+}
+
+
+### delete data api 
+DELETE http://localhost:3000/api/order/bEhGBIx877NXd7W0S-G3X
+
+
+### find data api 
+GET http://localhost:3000/api/order/bEhGBIx877NXd7W0S-G3X
+
+
+### update data api 
+PATCH http://localhost:3000/api/order/bEhGBIx877NXd7W0S-G3X
+
+{
+    "user_id":"873d1070-7517-4435-9922-a06ae5a72afe",
+    "date-order":"2024-03-17"
+}

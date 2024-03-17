@@ -1,0 +1,30 @@
+### get all data from api 
+GET http://localhost:3000/api/rating
+
+
+### get all user by role from api 
+GET http://localhost:3000/api/rating?role=vendor
+
+### post data api 
+POST http://localhost:3000/api/rating
+
+{
+     "user_id": "57734da9-16d1-4a86-a1a6-710358e77659",
+    "rate":4
+}
+
+
+### delete data api 
+DELETE http://localhost:3000/api/rating/yrnIm-XnCrgs9nKUPMz6S
+
+
+### find data api 
+GET http://localhost:3000/api/rating/yrnIm-XnCrgs9nKUPMz6S
+
+
+### update data api 
+PATCH http://localhost:3000/api/rating/Uenm642QDZJYIzmSKGyWx
+
+{
+    "rate":3
+}

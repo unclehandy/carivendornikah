@@ -1,0 +1,33 @@
+### get all data from api 
+GET http://localhost:3000/api/order_detail
+
+
+### get all user by role from api 
+GET http://localhost:3000/api/order_detail?role=vendor
+
+### post data api 
+POST http://localhost:3000/api/order_detail
+
+{
+ "order_id": "kuFE259K_p1hBFGfuir-P",
+  "user_id": "57734da9-16d1-4a86-a1a6-710358e77659",
+  "produk_id": "k35rCONu5_D5HvRDPwQxv",
+"stat":"yes",
+"qty":1
+}
+
+
+### delete data api 
+DELETE http://localhost:3000/api/order_detail/873d1070-7517-4435-9922-a06ae5a72afe
+
+
+### find data api 
+GET http://localhost:3000/api/order_detail/873d1070-7517-4435-9922-a06ae5a72afe
+
+
+### update data api 
+PATCH http://localhost:3000/api/order_detail/873d1070-7517-4435-9922-a06ae5a72afe
+
+{
+   "nama": "M Fikry Haykal"
+}
