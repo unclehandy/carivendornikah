@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Description
 This is a repository of carivendornikah as a final assignment required to pass Devscale.id bootcamp. This repository is managed by Devgenius team.
 
