@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#active {
+    @apply text-pink-600;
+}
+
+.profile-heading {
+    @apply text-sm font-semibold;
+}
+
+.profile-subheading {
+    @apply text-sm text-gray-800;
+}
