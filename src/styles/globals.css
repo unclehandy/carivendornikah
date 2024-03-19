@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+    body {
+      @apply text-sm;
+    }
+    h1 {
+      @apply text-2xl font-medium;
+    }
+    h2 {
+      @apply text-xl font-medium tracking-tight;
+    }
+    h3 {
+      @apply text-base font-medium tracking-tight;
+    }
+    button {
+      @apply block w-full btn-sm btn btn-primary;
+    }
+    input {
+      @apply block w-full input input-bordered;
+    }
+    select {
+      @apply block w-full select select-bordered;
+    }
+    textarea {
+      @apply block w-full textarea text-base textarea-bordered;
+    }
+    label {
+      @apply label label-text;
+    }
+  }
+  
+  @layer components {
+    .link {
+      @apply font-medium hover:text-primary no-underline;
+    }
+  }
+  
