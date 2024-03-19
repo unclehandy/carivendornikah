@@ -17,6 +17,17 @@ POST http://localhost:3000/api/users
 }
 
 
+POST http://localhost:3000/api/users/register
+
+{
+    "nama": "fikry haykal",
+    "email": "fikryhaykal@gmail.com",
+    "password": "123456",
+    "phone" :"0811007008",
+    "role" : "vendor"
+}
+
+
 ### delete data api 
 DELETE http://localhost:3000/api/users/873d1070-7517-4435-9922-a06ae5a72afe
 
@@ -36,6 +47,6 @@ PATCH http://localhost:3000/api/users/873d1070-7517-4435-9922-a06ae5a72afe
 POST http://localhost:3000/api/users/login
 
 {
-    "email": "surel.ronal@gmail.com",
+    "email": "fikryhaykal@gmail.com",
     "password": "123456"
 }

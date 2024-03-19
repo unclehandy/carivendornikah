@@ -13,6 +13,7 @@ export async function POST(req) {
         email,
       },
     });
+    console.log(findUser);
 
     // Jika user belum verifikasi, kirim pesan error
     if (findUser.verified === false) {
