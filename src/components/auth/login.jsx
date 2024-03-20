@@ -42,7 +42,7 @@ export const Login = () => {
     toast.success(message);
     // console.log (data.role);
     if (data.role==="user") {
-      router.push("/dashboard/user");   
+      router.push("/dashboard/user/profile");   
     } else {
       router.push("/dashboard/vendor");
     }
