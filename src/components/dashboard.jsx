@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { MyProfile } from "@/components/vendorProfile";
+import { ImageGrid } from "./portfolio";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -111,7 +112,7 @@ const Dashboard = () => {
         {activeTab === "Portfolio" && (
           <div>
             <h2 className="text-2xl font-bold mb-4 mt-4">Portfolio</h2>
-            <p>Belum ada isinya</p>
+            <ImageGrid />
           </div>
         )}
         {activeTab === "Package" && (
