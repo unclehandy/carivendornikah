@@ -43,6 +43,13 @@ PATCH http://localhost:3000/api/users/873d1070-7517-4435-9922-a06ae5a72afe
    "nama": "M Fikry Haykal"
 }
 
+### update data api 
+PATCH http://localhost:3000/api/users/dadfd8cf-bff7-4545-bfe2-8295161ccb39
+
+{
+   "nama": "Fulan ABC"
+}
+
 ###tes login
 POST http://localhost:3000/api/users/login
 
