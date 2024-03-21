@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 // import { siteUrl } from "@/config/siteUrl";
 
 export const Login = () => {
@@ -39,6 +40,7 @@ export const Login = () => {
 
     const { data, message } = await res.json();
     localStorage.setItem("user", JSON.stringify(data));
+    Cookies.set("id", data?.id); //store value user-id di cookies browser
     toast.success(message);
     // console.log (data.role);
     if (data.role==="user") {

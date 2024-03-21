@@ -12,7 +12,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row">
+    <div className="bg-white flex flex-col lg:flex-row">
       <div className="bg-gray-100 p-4 lg:w-1/6 h-lvh fixed">
         <div className="rounded-lg overflow-hidden">
           <img
@@ -29,7 +29,7 @@ const Dashboard = () => {
             </button>
           </div>
         </div>
-        <ul className="menu-md bg-base-200 w-56 rounded-box text-gray-600 mt-4 ml-4">
+        <ul className="menu-md bg-gray-100 w-56 rounded-box text-gray-600 mt-4 ml-4">
           <li>
             <a
               href="#"
@@ -102,7 +102,7 @@ const Dashboard = () => {
         </ul>
         {/* <MainMenu /> */}
       </div>
-      <div className="p-4 lg:w-3/4 ml-60">
+      <div className="bg-white p-4 lg:w-3/4 ml-60">
         {activeTab === "Profile" && (
           <div>
           <h2 className="text-2xl font-bold mb-4 mt-4">Profile</h2>
