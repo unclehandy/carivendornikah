@@ -33,7 +33,7 @@ DELETE http://localhost:3000/api/users/873d1070-7517-4435-9922-a06ae5a72afe
 
 
 ### find data api 
-GET http://localhost:3000/api/users/873d1070-7517-4435-9922-a06ae5a72afe
+GET http://localhost:3000/api/users/424193d1-e053-4641-898a-6f61172e1e9b
 
 
 ### update data api 
