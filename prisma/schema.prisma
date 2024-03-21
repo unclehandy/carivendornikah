@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -61,7 +55,10 @@ model User {
   orderdetail OrderDetail[]
   rating      Rating[]
   wedingdream WedingDream[]
-  bid Bid[]
+  bid         Bid[]
+  profile     Profile[]
+  portfolio   Portfolio[]
+
   @@map("user")
 }
 
@@ -70,7 +67,7 @@ model Keranjang {
   user      User     @relation(fields: [user_id], references: [id])
   user_id   String
   produk    Produk   @relation(fields: [produk_id], references: [id])
-  stat     String   @db.VarChar(5)
+  stat      String   @db.VarChar(5)
   produk_id String
   qty       Int
   createdAt DateTime @default(now())
@@ -83,7 +80,7 @@ model Order {
   id         String   @id @default(uuid())
   user       User     @relation(fields: [user_id], references: [id])
   user_id    String
-  date_order DateTime 
+  date_order DateTime
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
@@ -101,8 +98,8 @@ model OrderDetail {
   date_order DateTime @default(now())
   user       User     @relation(fields: [user_id], references: [id])
   user_id    String
-  stat     String   @db.VarChar(5)
-  qty       Int
+  stat       String   @db.VarChar(5)
+  qty        Int
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
@@ -134,7 +131,7 @@ model WedingDream {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  bid Bid[]
+  bid        Bid[]
   orderdream OrderDream[]
 
   @@map("wedingdream")
@@ -149,7 +146,7 @@ model Bid {
   nama      String @db.VarChar(150)
   harga     Int
   deskripsi String @db.Text()
-  user      User     @relation(fields: [user_id], references: [id])
+  user      User   @relation(fields: [user_id], references: [id])
   user_id   String
 
   createdAt DateTime @default(now())
@@ -157,20 +154,43 @@ model Bid {
 
   orderdream OrderDream[]
 
-
   @@map("bid")
 }
 
-
 model OrderDream {
-  id String @id @default(uuid())
+  id              String      @id @default(uuid())
   wedingdream     WedingDream @relation(fields: [weding_dream_id], references: [id])
   weding_dream_id String
-  bid     Bid @relation(fields: [bid_id], references: [id])
-  bid_id String
-  status     String   @db.Char(1)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  bid             Bid         @relation(fields: [bid_id], references: [id])
+  bid_id          String
+  status          String      @db.Char(1)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
 
   @@map("orderdream")
+}
+
+model Profile {
+  id             String @id @default(cuid())
+  lokasi         String
+  bio            String
+  provinsi       String
+  kabupaten_kota String
+  kode_pos       String
+  alamat_lengkap String
+  user_id        String @unique
+  user           User   @relation(fields: [user_id], references: [id])
+}
+
+model Portfolio {
+  id               String   @id @default(cuid())
+  judul            String
+  tanggal          DateTime
+  lokasi           String
+  deskripsi        String
+  gambar           String
+  gambar_pendukung String
+  slug             String
+  vendor_id        String
+  user             User     @relation(fields: [vendor_id], references: [id])
 }

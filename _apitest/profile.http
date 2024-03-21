@@ -1,0 +1,15 @@
+### get profile user
+GET http://localhost:3000/api/profile?user-id=0d30a91d-b879-4f24-931e-fffe147c8b7d
+
+### post data api 
+POST http://localhost:3000/api/profile
+
+{
+    "lokasi": "Semarang",
+    "bio": "ya gitu deh",
+    "provinsi": "jawa tengah",
+    "kabupaten_kota": "semarang",
+    "kode_pos": "61252",
+    "alamat_lengkap": "jl batursari 1",
+    "user_id": "0d30a91d-b879-4f24-931e-fffe147c8b7d"
+}

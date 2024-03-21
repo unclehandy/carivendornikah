@@ -9,6 +9,19 @@ export async function GET(_, {params}) {
     const userData = await prisma.user.findFirst ({
         where: {
             id: userId
+        },
+        include: {
+            profile: {
+              select: {
+                id: false,
+                lokasi: true,
+                bio: true,
+                provinsi: true,
+                kabupaten_kota: true,
+                kode_pos: true,
+                alamat_lengkap: true,
+              },
+            },
         }
     })
 
