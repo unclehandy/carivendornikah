@@ -6,34 +6,24 @@ GET http://localhost:3000/api/users
 GET http://localhost:3000/api/users?role=vendor
 
 ### post data api 
-POST http://localhost:3000/api/users
-
-{
-    "nama": "fikry haykal",
-    "email": "fikryhaykal@gmail.com",
-    "password": "123456",
-    "phone" :"0811007008",
-    "role" : "vendor"
-}
-
-
 POST http://localhost:3000/api/users/register
 
 {
-    "nama": "fikry haykal",
-    "email": "fikryhaykal@gmail.com",
+    "nama": "Handy Pratama",
+    "email": "handyetal@gmail.com",
     "password": "123456",
-    "phone" :"0811007008",
-    "role" : "vendor"
+    "phone":"081336351379",
+    "role": "vendor"
 }
-
 
 ### delete data api 
 DELETE http://localhost:3000/api/users/873d1070-7517-4435-9922-a06ae5a72afe
 
 
 ### find data api 
+
 GET http://localhost:3000/api/users/424193d1-e053-4641-898a-6f61172e1e9b
+
 
 
 ### update data api 
