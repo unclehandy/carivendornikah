@@ -1,4 +1,5 @@
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import slugify from "slugify";
 
 const s3Client = new S3Client({
   region: "ap-southeast-2",
@@ -15,7 +16,7 @@ export async function uploadFile({ Body, Key, ContentType, Dir }) {
   const command = new PutObjectCommand({
     Bucket: "nikahapp",
     Body: buffer,
-    Key: `${Dir}/${Key}`,
+    Key: `${Dir}/${slugify(Key, { lower: true })}`,
     ContentType,
   });
 

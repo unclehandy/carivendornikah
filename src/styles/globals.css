@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    input {
+      @apply block w-full input input-bordered rounded-sm;
+    }
+    input[type="date"] {
+        @apply text-gray-400;
+    }
+    select {
+      @apply block w-full select select-bordered rounded-sm;
+    }
+    textarea {
+      @apply block w-full textarea text-base textarea-bordered rounded-sm;
+    }
+    label {
+      @apply label label-text;
+    }
+  }
+
 #active {
     @apply text-pink-600;
 }
@@ -12,4 +30,16 @@
 
 .profile-subheading {
     @apply text-sm text-gray-800;
+}
+
+.portfolio-card-wrapper {
+    @apply flex flex-col p-4;
+}
+
+.portfolio-card {
+    @apply rounded-lg p-8 pb-6 flex flex-row gap-24 shadow-lg;
+}
+
+.debug-layout {
+    @apply border border-red-600;
 }
