@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { checkEnvironment } from "@/config/apiUrl";
 
 export default function Kategori() {
   const [kategori, setKategori] = useState([]);
@@ -14,7 +15,7 @@ export default function Kategori() {
     try {
       const options = {
         method: "GET",
-        url: "http://localhost:3000/api/kategori"
+        url: `${checkEnvironment()}/api/kategori`
       };
       const { data } = await axios.request(options);
       setKategori(data);
@@ -40,7 +41,7 @@ export default function Kategori() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await axios.delete(`http://localhost:3000/api/kategori/${id}`);
+          const response = await axios.delete(`${checkEnvironment()}/api/kategori/${id}`);
           if (response.status === 200) {
             fetchData();
           }
@@ -55,7 +56,7 @@ export default function Kategori() {
     try {
       if (editingKategori) {
         // Jika ada data yang sedang diedit
-        const response = await axios.patch(`http://localhost:3000/api/kategori/${editingKategori.id}`, { kategori: newKategori });
+        const response = await axios.patch(`${checkEnvironment()}/api/kategori/${editingKategori.id}`, { kategori: newKategori });
         if (response.status === 200) {
           fetchData();
           setModalOpen(false);
@@ -64,7 +65,7 @@ export default function Kategori() {
         }
       } else {
         // Jika tidak ada data yang sedang diedit (tambah kategori baru)
-        const response = await axios.post("http://localhost:3000/api/kategori", { kategori: newKategori });
+        const response = await axios.post(`${checkEnvironment()}/api/kategori`, { kategori: newKategori });
         if (response.status === 201) {
           fetchData();
           setModalOpen(false);
