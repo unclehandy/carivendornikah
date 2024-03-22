@@ -12,6 +12,7 @@ const Dashboard = () => {
   };
 
   return (
+
     <div className="bg-white flex flex-col lg:flex-row">
       <div className="bg-gray-100 p-4 lg:w-1/6 h-lvh fixed">
         <div className="rounded-lg overflow-hidden">
@@ -103,6 +104,7 @@ const Dashboard = () => {
         {/* <MainMenu /> */}
       </div>
       <div className="bg-white p-4 lg:w-3/4 ml-60">
+
         {activeTab === "Profile" && (
           <div>
           <h2 className="text-2xl font-bold mb-4 mt-4">Profile</h2>
@@ -122,7 +124,7 @@ const Dashboard = () => {
           </div>
         )}
       </div>
-    </div>
+  
   );
 };
 

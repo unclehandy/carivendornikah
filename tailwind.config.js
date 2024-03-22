@@ -11,9 +11,14 @@ module.exports = {
       },
     },
   },
-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
-  plugins: [require("daisyui")],
+
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   daisyui: {
-    themes: ["valentine"],
-  },
+    themes: [
+      "bumblebee",
+    ],
+},
+
 };

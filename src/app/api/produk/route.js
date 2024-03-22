@@ -26,14 +26,16 @@ export async function GET() {
 }
 
 export async function POST(request) {
-    const { nama, harga, gambar, deskripsi, kategori_id,user_id } = await request.json();
+    const { nama, harga, gambar, deskripsi, kategori_id, user_id } =  await request.json();
 
+
+    console.log("Type of nama:", typeof nama);
     try {
         const newProduk = await prisma.produk.create({
             data: {
                 id: nanoid(),
                 nama: nama,
-                harga: harga,
+                harga:  parseInt(harga),
                 gambar: gambar,
                 deskripsi: deskripsi,
                 slug: slugify(nama, { lower: true }),

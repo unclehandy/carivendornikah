@@ -55,7 +55,7 @@ export async function PATCH(request) {
             },
             data: {
                 nama: nama,
-                harga: harga,
+                harga:  parseInt(harga),
                 gambar: gambar,
                 deskripsi: deskripsi,
                 slug: slugify(nama, { lower: true }),

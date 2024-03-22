@@ -51,7 +51,7 @@ export const Register = () => {
       <input name="nama" placeholder="nama lengkap" onChange={handleChangeInput} className="input input-bordered w-full max-w-xs"/>
       <input name="email" placeholder="alamat email" onChange={handleChangeInput} className="input input-bordered w-full max-w-xs"/>
       <input name="phone" placeholder="no telepon" onChange={handleChangeInput} className="input input-bordered w-full max-w-xs"/>
-      <input name="password" placeholder="kata sandi" onChange={handleChangeInput} className="input input-bordered w-full max-w-xs"/>
+      <input name="password" type="password" placeholder="kata sandi" onChange={handleChangeInput} className="input input-bordered w-full max-w-xs"/>
       <button className="btn-md btn btn-neutral" onClick={handleRegister}>
         Daftar
       </button>
