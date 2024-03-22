@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation"; // Import useRouter untuk navigasi
+import { checkEnvironment } from "@/config/apiUrl";
 
 export default function Produk() {
   const router = useRouter(); // Inisialisasi useRouter
@@ -27,7 +28,7 @@ export default function Produk() {
     try {
       const options = {
         method: "GET",
-        url: "http://localhost:3000/api/produk",
+        url: `${checkEnvironment()}/api/produk`,
       };
       const { data } = await axios.request(options);
       setProduk(data);
@@ -39,7 +40,7 @@ export default function Produk() {
 
   const fetchKategoris = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/kategori");
+      const response = await axios.get(`${checkEnvironment()}/api/kategori`);
       console.log(response.data); // Log the response data
       setKategoriOptions(response.data);
     } catch (error) {
@@ -65,7 +66,7 @@ export default function Produk() {
       if (result.isConfirmed) {
         try {
           const response = await axios.delete(
-            `http://localhost:3000/api/produk/${id}`
+            `/api/produk/${id}`
           );
           if (response.status === 200) {
             fetchData();
@@ -81,7 +82,7 @@ export default function Produk() {
     try {
       if (editingProduk) {
         const response = await axios.patch(
-          `http://localhost:3000/api/produk/${editingProduk.id}`,
+          `${checkEnvironment()}/api/produk/${editingProduk.id}`,
           { produk: newProduk }
         );
         if (response.status === 200) {
@@ -92,7 +93,7 @@ export default function Produk() {
         }
       } else {
         const response = await axios.post(
-          "http://localhost:3000/api/produk",
+          `${checkEnvironment()}/api/produk`,
           newProduk // Menggunakan newProduk langsung sebagai payload
         );
         if (response.status === 201) {
