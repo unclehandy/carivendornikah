@@ -1,7 +1,6 @@
 import { PortfolioCard } from "./portfolio/portfolioCard";
-import { MoreHorizontal, PackageX } from "lucide-react";
 
-export const ImageGrid = () => {
+export const Portfolio = () => {
   return (
     <div>
       <div className="portfolio-card-wrapper">
