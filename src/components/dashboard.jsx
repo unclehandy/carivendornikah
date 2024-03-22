@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   return (
     <div className="bg-white flex flex-col lg:flex-row">
-      <div className="bg-gray-100 p-4 lg:w-1/6 h-lvh fixed">
+      {/* <div className="bg-gray-100 p-4 lg:w-1/6 h-lvh fixed">
         <div className="rounded-lg overflow-hidden">
           <img
             className="rounded-full mx-auto mt-4 object-contain"
@@ -33,7 +33,9 @@ const Dashboard = () => {
           <li>
             <a
               href="#"
-              className={`${activeTab === "Profile" ? "active" : ""} flex flex-row items-center gap-2`}
+              className={`${
+                activeTab === "Profile" ? "active" : ""
+              } flex flex-row items-center gap-2`}
               onClick={() => handleTabChange("Profile")}
             >
               <svg
@@ -56,7 +58,9 @@ const Dashboard = () => {
           <li>
             <a
               href="#"
-              className={`${activeTab === "Portfolio" ? "active" : ""} flex flex-row items-center gap-2`}
+              className={`${
+                activeTab === "Portfolio" ? "active" : ""
+              } flex flex-row items-center gap-2`}
               onClick={() => handleTabChange("Portfolio")}
             >
               <svg
@@ -79,7 +83,9 @@ const Dashboard = () => {
           <li>
             <a
               href="#"
-              className={`${activeTab === "Package" ? "active" : ""} flex flex-row items-center gap-2`}
+              className={`${
+                activeTab === "Package" ? "active" : ""
+              } flex flex-row items-center gap-2`}
               onClick={() => handleTabChange("Package")}
             >
               <svg
@@ -101,13 +107,13 @@ const Dashboard = () => {
           </li>
         </ul>
         {/* <MainMenu /> */}
-      </div>
+      {/* </div> */}
       <div className="bg-white p-4 lg:w-3/4 ml-60">
         {activeTab === "Profile" && (
           <div>
-          <h2 className="text-2xl font-bold mb-4 mt-4">Profile</h2>
-          <MyProfile />
-        </div>
+            <h2 className="text-2xl font-bold mb-4 mt-4">Profile</h2>
+            <MyProfile />
+          </div>
         )}
         {activeTab === "Portfolio" && (
           <div>

@@ -25,9 +25,9 @@ export async function GET() {
     }
 }
 
-export async function POST(request) {
-    const { nama, harga, gambar, deskripsi, kategori_id,user_id } = await request.json();
-
+export async function POST(req,res) {
+    const { nama, harga, gambar, deskripsi, kategori_id, user_id } = await req.body;
+    console.log("Type of nama:", typeof nama);
     try {
         const newProduk = await prisma.produk.create({
             data: {

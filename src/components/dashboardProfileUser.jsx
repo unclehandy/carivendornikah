@@ -1,13 +1,15 @@
 "use client";
-
+import toast from "react-hot-toast";
 import { TemplateUser } from "@/components/templateUser";
 import { useEffect, useState } from "react";
 import Avatar from "boring-avatars";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { ModalUser } from "./modalUser";
 
-export default function Page() {
+export const DashboardProfileUser =() => {
   const [user, setUser] = useState (null);
+
   const router = useRouter();
 
   function handleLogout () {
@@ -23,15 +25,19 @@ export default function Page() {
     setUser(parsedUserData);
   },[])
 
+
+  
   return (
       <TemplateUser>
       <div className="personal-information border border-gray-300 rounded-lg p-4 m-4">
         <div className="flex items-center justify-between ">
           <h3 className="text-lg font-semibold p-2">Profil Pengguna</h3>
           <div className="space-x-2">
-            <button className="btn-sm btn btn-neutral">Edit</button>
+            {/* <button onClick={()=>setEditMode(true)} className="btn-sm btn btn-neutral">Edit</button> */}
+            <button  className="btn-sm btn btn-neutral" onClick={() => document.getElementById("modalEditUser").showModal()}>Edit</button>
             <button onClick={handleLogout} className="btn-sm btn btn-neutral">Log Out</button>
           </div>
+          <ModalUser user={user} />
         </div>
         <div className="ml-2">
               <Avatar size={30} name={user?.nama} variant="beam" colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}/>

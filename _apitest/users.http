@@ -21,7 +21,11 @@ DELETE http://localhost:3000/api/users/873d1070-7517-4435-9922-a06ae5a72afe
 
 
 ### find data api 
-GET http://localhost:3000/api/users/0d30a91d-b879-4f24-931e-fffe147c8b7d
+
+GET http://localhost:3000/api/users/424193d1-e053-4641-898a-6f61172e1e9b
+
+
+
 
 
 ### update data api 
@@ -29,6 +33,13 @@ PATCH http://localhost:3000/api/users/873d1070-7517-4435-9922-a06ae5a72afe
 
 {
    "nama": "M Fikry Haykal"
+}
+
+### update data api 
+PATCH http://localhost:3000/api/users/dadfd8cf-bff7-4545-bfe2-8295161ccb39
+
+{
+   "nama": "Fulan ABC"
 }
 
 ###tes login

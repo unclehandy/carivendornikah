@@ -14,7 +14,7 @@ export async function uploadFile({ Body, Key, ContentType, Dir }) {
   const buffer = Buffer.from(bytes);
 
   const command = new PutObjectCommand({
-    Bucket: "carivendornikah",
+    Bucket: "nikahapp",
     Body: buffer,
     Key: `${Dir}/${slugify(Key, { lower: true })}`,
     ContentType,
