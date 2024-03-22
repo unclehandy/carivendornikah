@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { MyProfile } from "@/components/vendorProfile";
+import { PackageUser } from "./packageUser";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -32,7 +33,9 @@ const Dashboard = () => {
           <li>
             <a
               href="#"
-              className={`${activeTab === "Profile" ? "active" : ""} flex flex-row items-center gap-2`}
+              className={`${
+                activeTab === "Profile" ? "active" : ""
+              } flex flex-row items-center gap-2`}
               onClick={() => handleTabChange("Profile")}
             >
               <svg
@@ -55,7 +58,9 @@ const Dashboard = () => {
           <li>
             <a
               href="#"
-              className={`${activeTab === "Portfolio" ? "active" : ""} flex flex-row items-center gap-2`}
+              className={`${
+                activeTab === "Portfolio" ? "active" : ""
+              } flex flex-row items-center gap-2`}
               onClick={() => handleTabChange("Portfolio")}
             >
               <svg
@@ -78,7 +83,9 @@ const Dashboard = () => {
           <li>
             <a
               href="#"
-              className={`${activeTab === "Package" ? "active" : ""} flex flex-row items-center gap-2`}
+              className={`${
+                activeTab === "Package" ? "active" : ""
+              } flex flex-row items-center gap-2`}
               onClick={() => handleTabChange("Package")}
             >
               <svg
@@ -104,9 +111,9 @@ const Dashboard = () => {
       <div className="p-4 lg:w-3/4 ml-60">
         {activeTab === "Profile" && (
           <div>
-          <h2 className="text-2xl font-bold mb-4 mt-4">Profile</h2>
-          <MyProfile />
-        </div>
+            <h2 className="text-2xl font-bold mb-4 mt-4">Profile</h2>
+            <MyProfile />
+          </div>
         )}
         {activeTab === "Portfolio" && (
           <div>
@@ -116,8 +123,8 @@ const Dashboard = () => {
         )}
         {activeTab === "Package" && (
           <div>
-            <h2 className="text-2xl font-bold mb-4 mt-4">Package</h2>
-            <p>Belum ada isinya</p>
+            <h2 className="text-2xl font-bold mb-4 mt-4 ">Package</h2>
+            <PackageUser />
           </div>
         )}
       </div>
