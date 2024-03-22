@@ -2,25 +2,22 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useRouter } from "next/navigation"; // Import useRouter untuk navigasi
+import Link from "next/link";
 
 export default function Produk() {
-  const router = useRouter(); // Inisialisasi useRouter
-
   const [produk, setProduk] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [editingProduk, setEditingProduk] = useState(null);
-  const [kategoriOptions, setKategoriOptions] = useState([]);
 
-  // State untuk data produk baru
+
+
+
   const [newProduk, setNewProduk] = useState({
-    nama: "",
-    harga: 0,
-    kategori_id: "",
-    user_id: "",
-    gambar: "",
-    deskripsi: "",
+    "nama": "Potograper Weding",
+    "harga": 1000000,
+     "kategori_id": "eLW5iUh1s443adagmnOZq",
+    "user_id": "57734da9-16d1-4a86-a1a6-710358e77659",
+    "gambar": "https://images.squarespace-cdn.com/content/v1/5a1dda174c326df2710b8e91/1546389022382-R018EAQGVHKD77NNTCOU/bay-area-wedding-photography.jpg",
+    "deskripsi": "Mari abadikan momen berharga pernikahan Anda dengan sempurna bersama kami! Sebagai fotografer pernikahan berpengalaman, kami menghadirkan layanan fotografi yang berfokus pada kualitas, kreativitas, dan kehangatan emosi.Dengan pengalaman bertahun-tahun di industri ini, kami memahami betapa pentingnya setiap momen dalam pernikahan Anda. Dari senyuman kecil hingga momen emosional yang tak terlupakan, kami berkomitmen untuk menangkap setiap detail dengan indah dan autentik."
   });
 
   const fetchData = async () => {
@@ -37,19 +34,12 @@ export default function Produk() {
     }
   };
 
-  const fetchKategoris = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/api/kategori");
-      console.log(response.data); // Log the response data
-      setKategoriOptions(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
 
   useEffect(() => {
     fetchData();
-    fetchKategoris();
+  
+    
   }, []);
 
   const handleDelete = async (id) => {
@@ -77,53 +67,7 @@ export default function Produk() {
     });
   };
 
-  const handleAddOrUpdate = async (event) => {
-    try {
-      if (editingProduk) {
-        const response = await axios.patch(
-          `http://localhost:3000/api/produk/${editingProduk.id}`,
-          { produk: newProduk }
-        );
-        if (response.status === 200) {
-          fetchData();
-          setModalOpen(false);
-          setEditingProduk(null);
-          setNewProduk("");
-        }
-      } else {
-        const response = await axios.post(
-          "http://localhost:3000/api/produk",
-          newProduk // Menggunakan newProduk langsung sebagai payload
-        );
-        if (response.status === 201) {
-          fetchData();
-          setModalOpen(false);
-          setNewProduk("");
-        }
-      }
-    } catch (error) {
-      console.log(error.response.data);
-    }
-  };
-
-  const openModalForEdit = (data) => {
-    setEditingProduk(data);
-    setNewProduk(data); // Set nilai newProduk sesuai dengan data yang akan diedit
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-    setEditingProduk(null);
-    setNewProduk({
-      nama: "",
-      harga: 0,
-      kategori_id: "",
-      user_id: "",
-      gambar: "",
-      deskripsi: "",
-    }); // Reset newProduk ke nilai awal
-  };
+  
 
   return (
     <div className="w-full">
@@ -148,6 +92,7 @@ export default function Produk() {
                   </tr>
                 </thead>
                 <tbody>
+                  {/* Tampilkan data Produk jika Produk bukan null */}
                   {produk.data &&
                     produk.data.map((item, index) => (
                       <tr key={index}>
@@ -160,12 +105,12 @@ export default function Produk() {
                           >
                             Hapus
                           </button>
-                          <button
-                            className="btn btn-sm btn-accent"
-                            onClick={() => openModalForEdit(item)}
+                          <Link
+
+                          href={`product/${item.id}`}
                           >
                             Edit
-                          </button>
+                          </Link>
                         </td>
                       </tr>
                     ))}
@@ -173,105 +118,13 @@ export default function Produk() {
               </table>
             </div>
           ) : (
+            // Tampilkan pesan loading selama data masih dimuat
             <p>Loading...</p>
           )}
         </div>
       </div>
 
-      {modalOpen && (
-        <div className="modal modal-open">
-          <div className="modal-box">
-            <div className="modal-close" onClick={closeModal}></div>
-            <div className="modal-body">
-              <h2>{editingProduk ? "Edit Produk" : "Tambah Produk"}</h2>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Nama</span>
-                </label>
-                <input
-                  type="text"
-                  className="input input-bordered w-full"
-                  value={newProduk.nama}
-                  onChange={(e) =>
-                    setNewProduk({ ...newProduk, nama: e.target.value })
-                  }
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Harga</span>
-                </label>
-                <input
-                  type="number"
-                  className="input input-bordered w-full"
-                  value={newProduk.harga}
-                  onChange={(e) =>
-                    setNewProduk({ ...newProduk, harga: e.target.value })
-                  }
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Gambar</span>
-                </label>
-                <input
-                  type="text"
-                  className="input input-bordered w-full"
-                  value={newProduk.gambar}
-                  onChange={(e) =>
-                    setNewProduk({ ...newProduk, gambar: e.target.value })
-                  }
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Deskripsi</span>
-                </label>
-                <textarea
-                  className="textarea textarea-bordered w-full"
-                  value={newProduk.deskripsi}
-                  onChange={(e) =>
-                    setNewProduk({ ...newProduk, deskripsi: e.target.value })
-                  }
-                ></textarea>
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Kategori</span>
-                </label>
-                <select
-                  className="select select-bordered w-full"
-                  value={newProduk.kategori_id}
-                  onChange={(e) =>
-                    setNewProduk({
-                      ...newProduk,
-                      kategori_id: e.target.value,
-                    })
-                  }
-                >
-                  <option value="">Pilih Kategori</option>
-                  {kategoriOptions.data &&
-                    kategoriOptions.data.map((kategori) => (
-                      <option key={kategori.id} value={kategori.id}>
-                        {kategori.kategori}
-                      </option>
-                    ))}
-                </select>
-              </div>
-
-              <button
-                className="btn btn-primary mt-4"
-                onClick={handleAddOrUpdate}
-              >
-                {editingProduk ? "Simpan Perubahan" : "Tambah"}
-              </button>
-              <button className="btn ms-3" onClick={closeModal}>
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 }
