@@ -44,9 +44,9 @@ export const Login = () => {
     toast.success(message);
     // console.log (data.role);
     if (data.role==="user") {
-      router.push("/dashboard/user/profile");   
+      router.push("/dashboard-user/profile");   
     } else {
-      router.push("/dashboard/vendor");
+      router.push("/dashboard");
     }
     // //window.location.replace(siteUrl);
   }
