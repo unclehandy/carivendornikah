@@ -4,6 +4,7 @@ import { TemplateUser } from "@/components/templateUser";
 import { UserRound } from "lucide-react";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { checkEnvironment } from "@/config/apiUrl";
 
 export default function Produk() {
   const [produkData, setProdukData] = useState([]);

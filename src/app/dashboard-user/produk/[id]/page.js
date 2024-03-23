@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { TemplateUser } from "@/components/templateUser";
 import toast from "react-hot-toast";
+import { checkEnvironment } from '@/config/apiUrl';
 
 export default function DetailProduk({params}) {
     const [produkData, setProdukData] = useState(null);
