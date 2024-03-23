@@ -16,7 +16,7 @@ export default function Produk() {
   const [kategoriOptions, setKategoriOptions] = useState([]);
   const [featuredImagePreview, setFeaturedImagePreview] = useState(null);
 
-  const user_id = JSON.parse(localStorage.getItem("user"));
+  const user_id = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("user")) || {} : {};
   console.log(user_id.id);
 
   function createFeaturedImagePreview(file) {
