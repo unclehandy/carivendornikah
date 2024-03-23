@@ -4,6 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation"; // Import useRouter untuk navigasi
 import { checkEnvironment } from "@/config/apiUrl";
+import Image from "next/image";
 
 export default function Produk() {
   const router = useRouter(); // Inisialisasi useRouter
@@ -13,13 +14,27 @@ export default function Produk() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingProduk, setEditingProduk] = useState(null);
   const [kategoriOptions, setKategoriOptions] = useState([]);
+  const [featuredImagePreview, setFeaturedImagePreview] = useState(null);
+
+  const user_id = JSON.parse(localStorage.getItem("user"));
+  console.log(user_id.id);
+
+  function createFeaturedImagePreview(file) {
+    if (file) {
+      const objectUrl = URL.createObjectURL(file);
+      setFeaturedImagePreview(objectUrl);
+      setNewProduk({ ...newProduk, gambar: file });
+    
+    }
+    
+  }
 
   // State untuk data produk baru
   const [newProduk, setNewProduk] = useState({
     nama: "",
     harga: 0,
     kategori_id: "",
-    user_id: "",
+    user_id: user_id.id,
     gambar: "",
     deskripsi: "",
   });
@@ -65,9 +80,7 @@ export default function Produk() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await axios.delete(
-            `/api/produk/${id}`
-          );
+          const response = await axios.delete(`/api/produk/${id}`);
           if (response.status === 200) {
             fetchData();
           }
@@ -79,11 +92,26 @@ export default function Produk() {
   };
 
   const handleAddOrUpdate = async (event) => {
+
     try {
       if (editingProduk) {
+
+        const formData = new FormData();
+        formData.append('nama', newProduk.nama);
+        formData.append('harga', newProduk.harga);
+        formData.append('kategori_id', newProduk.kategori_id);
+        formData.append('user_id', user_id.id);
+        formData.append('gambar', newProduk.gambar);
+        formData.append('deskripsi', newProduk.deskripsi);
+
         const response = await axios.patch(
           `${checkEnvironment()}/api/produk/${editingProduk.id}`,
-          { produk: newProduk }
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          } // Menggunakan newProduk langsung sebagai payload
         );
         if (response.status === 200) {
           fetchData();
@@ -92,9 +120,23 @@ export default function Produk() {
           setNewProduk("");
         }
       } else {
+
+        const formData = new FormData();
+        formData.append('nama', newProduk.nama);
+        formData.append('harga', newProduk.harga);
+        formData.append('kategori_id', newProduk.kategori_id);
+        formData.append('user_id', user_id.id);
+        formData.append('gambar', newProduk.gambar);
+        formData.append('deskripsi', newProduk.deskripsi);
+
         const response = await axios.post(
           `${checkEnvironment()}/api/produk`,
-          newProduk // Menggunakan newProduk langsung sebagai payload
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          } // Menggunakan newProduk langsung sebagai payload
         );
         if (response.status === 201) {
           fetchData();
@@ -212,17 +254,31 @@ export default function Produk() {
                 />
               </div>
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Gambar</span>
-                </label>
-                <input
-                  type="text"
-                  className="input input-bordered w-full"
-                  value={newProduk.gambar}
-                  onChange={(e) =>
-                    setNewProduk({ ...newProduk, gambar: e.target.value })
-                  }
-                />
+
+                <div>
+                  <label className="label">Featured Image</label>
+                  <input
+                    name="gambar"
+                    type="file"
+                    className="file-input file-input-bordered w-full"
+                    onChange={(event) =>
+                      createFeaturedImagePreview(event.target.files[0])
+                    }
+                  />
+                  <div className="my-4">
+                    {" "}
+                    {featuredImagePreview ? (
+                      <Image
+                        alt="Featured Image"
+                        src={featuredImagePreview}
+                        width={200}
+                        height={200}
+                        className="rounded-lg"
+                      />
+                    ) : null}
+                  </div>
+                </div>
+
               </div>
               <div className="form-control">
                 <label className="label">

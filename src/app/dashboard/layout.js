@@ -11,7 +11,7 @@ export default function Layout({ children }) {
   return (
     <div className="flex bg-slate-100 h-screen">
       {/* Left Sidebar Navigation */}
-      <div className="sidebar-left w-1/6 bg-slate-100 h-screen fixed">
+      <div className="sidebar-left w-1/6 bg-pink-200 h-screen fixed">
         <nav className="p-4">
           <div className="rounded-lg overflow-hidden">
             <img
