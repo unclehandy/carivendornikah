@@ -18,7 +18,7 @@ POST http://localhost:3000/api/order_detail
 
 
 ### delete data api 
-DELETE http://localhost:3000/api/order_detail/873d1070-7517-4435-9922-a06ae5a72afe
+DELETE http://localhost:3000/api/order_detail/L43lM9rrGj0V9MBQXSfxI
 
 
 ### find data api 

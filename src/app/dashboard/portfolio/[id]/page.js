@@ -17,7 +17,6 @@ export default async function Page({ params }) {
       cache: "no-store",
     });
     const vendor = await res.json();
-
     return vendor;
   }
 
