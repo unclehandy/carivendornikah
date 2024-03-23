@@ -8,3 +8,16 @@ export function stringToDate(date) {
 
   return tanggal;
 }
+
+export function formatDate(input) {
+  // Parse the input date string
+  const date = new Date(input);
+
+  // Create options for formatting the date
+  const options = { day: '2-digit', month: 'long', year: 'numeric' };
+
+  // Format the date according to the options
+  const formattedDate = date.toLocaleDateString('id-ID', options);
+
+  return formattedDate;
+}
