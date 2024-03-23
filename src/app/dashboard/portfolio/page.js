@@ -4,15 +4,15 @@ import Link from "next/link";
 import { checkEnvironment } from "@/config/apiUrl";
 
 async function getPortfolio() {
-  const res = await fetch(`${checkEnvironment()}/api/portfolio`, {
-    cache: "no-cache",
+  const res = await fetch(`${checkEnvironment()}/api/portfolio`,{
+    cache: 'no-store',
   });
   const { vendorPortfolio } = await res.json();
   return vendorPortfolio;
 }
 
-export default async function Home() {
-  const portfolios = await getPortfolio();
+export default function Home() {
+  const portfolios = getPortfolio();
 
   return (
     <main className="bg-white">
