@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { ModalUser } from "./modalUser";
 
-export const DashboardProfileUser =() => {
+export const DashboardProfileUser =({dataUser}) => {
   const [user, setUser] = useState (null);
 
   const router = useRouter();
@@ -25,8 +25,18 @@ export const DashboardProfileUser =() => {
     setUser(parsedUserData);
   },[])
 
-
   
+  
+  // const getUserData = async () => {
+  //   const res = await fetch (`/api/users/${id}`);
+  //   // const data = await res.json();
+  //   return res.json();
+  // }
+
+  // const data = await getUserData(user?.id);
+  // console.log (data);
+
+
   return (
       <TemplateUser>
       <div className="personal-information border border-gray-300 rounded-lg p-4 m-4">
@@ -40,25 +50,25 @@ export const DashboardProfileUser =() => {
           <ModalUser user={user} />
         </div>
         <div className="ml-2">
-              <Avatar size={30} name={user?.nama} variant="beam" colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}/>
+              <Avatar size={30} name={dataUser?.nama} variant="beam" colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}/>
         </div>
         <div className="grid grid-cols-2 gap-4 p-2">
           <div>
             <h5 className="profile-heading">Nama Pengguna</h5>
-            <p className="profile-subheading">{user?.nama}</p>
+            <p className="profile-subheading">{dataUser?.nama}</p>
           </div>
           <div>
             <h5 className="profile-heading">Alamat Email</h5>
-            <p className='profile-subheading'>{user?.email}</p>
+            <p className='profile-subheading'>{dataUser?.email}</p>
           </div>
           
           <div>
             <h5 className="profile-heading">Nomor Telepon</h5>
-            <p className='profile-subheading'>{user?.phone}</p>
+            <p className='profile-subheading'>{dataUser?.phone}</p>
           </div>
           <div>
             <h5 className="profile-heading">Role</h5>
-            <p className='profile-subheading'>{user?.role}</p>
+            <p className='profile-subheading'>{dataUser?.role}</p>
           </div>
         </div>
       </div>

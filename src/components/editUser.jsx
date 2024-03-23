@@ -2,6 +2,7 @@
 import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export const EditUser = ({user}) => {
   const [id, setId] = useState ("");
@@ -33,6 +34,7 @@ export const EditUser = ({user}) => {
     }
   }, [user]);
 
+
   async function handleUpdateUser () {
     try {
     const res = await fetch (`/api/users/${id}`,{
@@ -53,9 +55,23 @@ export const EditUser = ({user}) => {
     }
       const dataUser = await res.json()
       // console.log(dataUser);
+      
+      // const resUser = await fetch (`/api/users/${id}`);
+      // const dataUpdateUser = await resUser.json();
+      
+      // // // console.log(dataUpdateUser);
+      // // //hapus localstorage dan token existing
+      // // localStorage.removeItem("user");
+      // // // Cookies.remove("token");
+      // // // add localstorage dengan data api baru
+      // localStorage.setItem("user", JSON.stringify(dataUpdateUser));
+      // // Cookies.set("token", token);
+
       router.refresh() 
+
       toast.success("Data User berhasil Di Update")
- 
+      // window.location.replace("/dashboard-user/profile")      
+      
   } catch (error) {
       console.error('Error updating user:', error.message);
   }
