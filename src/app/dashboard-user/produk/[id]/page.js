@@ -15,7 +15,7 @@ export default function DetailProduk({params}) {
         async function fetchProduk() {
             
             try {
-                const response = await fetch(`http://localhost:3000/api/produk/${id}`);
+                const response = await fetch(`${checkEnvironment()}/api/produk/${id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch produk data');
                 }
@@ -34,7 +34,7 @@ export default function DetailProduk({params}) {
 
     const addToCart = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/keranjang', {
+            const response = await fetch(`${checkEnvironment()}/api/keranjang`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

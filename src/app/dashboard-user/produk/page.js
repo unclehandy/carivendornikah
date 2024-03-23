@@ -11,7 +11,7 @@ export default function Produk() {
   useEffect(() => {
     async function fetchProduk() {
       try {
-        const response = await fetch("http://localhost:3000/api/produk");
+        const response = await fetch(`${checkEnvironment()}/api/produk`);
         if (!response.ok) {
           throw new Error("Failed to fetch produk data");
         }
@@ -28,7 +28,7 @@ export default function Produk() {
 
   const addToCart = async (id) => {
     try {
-      const response = await fetch('http://localhost:3000/api/keranjang', {
+      const response = await fetch(`${checkEnvironment()}/api/keranjang`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

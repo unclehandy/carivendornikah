@@ -8,7 +8,7 @@ export default function OrderDetail() {
 
     const fetchOrderDetails = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/order_detail');
+            const response = await fetch(`${checkEnvironment()}/api/order_detail`);
             if (!response.ok) {
                 throw new Error('Failed to fetch order details');
             }
