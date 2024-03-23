@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "../../../../../prisma/client";
 import slugify from "slugify";
+import { uploadFile } from "@/lib/uploadFile";
 
 export async function GET(request) {
     const { id } = parseIdFromUrl(request.url);
@@ -46,7 +47,33 @@ export async function GET(request) {
 
 export async function PATCH(request) {
     const { id } = parseIdFromUrl(request.url);
-    const { nama, harga, gambar, deskripsi, kategori_id } = await request.json();
+    const formData = await request.formData();
+
+
+    const iduser = formData.get("user_id");
+    const nama = formData.get("nama");
+    const harga = formData.get("harga");
+    const deskripsi = formData.get("deskripsi");
+    const kategori_id = formData.get("kategori_id");
+    const user_id = formData.get("user_id");
+    const featuredImage = formData.get("gambar");
+
+
+
+    
+    try {
+        await uploadFile({
+          Body: featuredImage,
+          Key: featuredImage.name,
+          ContentType: featuredImage.type,
+          Dir: `products/${iduser}`,
+        });
+    
+      } catch (error) {
+        console.log(error);
+      }
+    
+
 
     try {
         const updatedProduk = await prisma.produk.update({
@@ -55,8 +82,8 @@ export async function PATCH(request) {
             },
             data: {
                 nama: nama,
-                harga: harga,
-                gambar: gambar,
+                harga: parseInt(harga),
+                gambar: slugify(featuredImage.name, { lower: true }),
                 deskripsi: deskripsi,
                 slug: slugify(nama, { lower: true }),
                 kategori: {

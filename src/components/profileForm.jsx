@@ -53,7 +53,7 @@ export const ProfileForm = () => {
             className="file-input file-input-bordered w-full"
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-accent text-black">
           Save
         </button>
       </form>
