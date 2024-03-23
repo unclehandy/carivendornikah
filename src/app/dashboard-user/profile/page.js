@@ -1,10 +1,11 @@
 import { DashboardProfileUser } from '@/components/dashboardProfileUser'
 import { cookies } from 'next/headers';
+import { checkEnvironment } from "@/config/apiUrl";
 
 async function getUsers () {
    const userId = cookies().get("id").value; 
   //  return token;
-   const res = await fetch (`http://localhost:3000/api/users/${userId}`);
+   const res = await fetch (`${checkEnvironment()}/api/users/${userId}`);
    const data = await res.json();
    return data;
 }
