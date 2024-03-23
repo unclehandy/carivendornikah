@@ -15,7 +15,7 @@ export const PortfolioForm = () => {
   }
 
   return (
-    <form action={handleSubmitPortfolio} className="debug-layout">
+    <form action={handleSubmitPortfolio} >
       <section className="space-y-3">
         <div>
           <label>Judul Portfolio</label>
@@ -57,7 +57,7 @@ export const PortfolioForm = () => {
           />
         </div>
         <div className="flex gap-4"></div>
-        <button className="btn btn-primary text-white">Submit Product</button>
+        <button className="text-gray-600 border border-gray-300 py-2 px-8 text-sm">Kirim</button>
       </section>
     </form>
   );
