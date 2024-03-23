@@ -6,7 +6,14 @@ import { uploadFile } from "@/lib/uploadFile";
 
 export async function GET() {
   try {
-    const produk = await prisma.produk.findMany();
+    const produk = await prisma.produk.findMany(
+      {
+        include: {
+          kategori: true,
+          user: true,
+        },
+      }
+    );
     return NextResponse.json(
       {
         success: true,

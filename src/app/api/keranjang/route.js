@@ -4,7 +4,12 @@ import { nanoid } from "nanoid";
 
 export async function GET() {
     try {
-        const keranjangItems = await prisma.keranjang.findMany();
+        const keranjangItems = await prisma.keranjang.findMany({
+            include: {
+                produk: true,
+                user: true,
+              },
+        });
         return NextResponse.json({
             success: true,
             message: "List of items in keranjang",
