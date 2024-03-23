@@ -61,6 +61,12 @@ export const PortfolioCard = () => {
                     </Link>
                   </div>
                 </div>
+                <Link href={"/dashboard/portfolio/" + id}>
+                <div className="flex gap-2 items-center p-2 rounded-sm">
+                  <span className="text-sm">Selengkapnya</span>
+                  <ArrowRight size={16} />
+                </div>
+                </Link>
               </div>
               <div className="relative h-52 w-72">
                 <Image

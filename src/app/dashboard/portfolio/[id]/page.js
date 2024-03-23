@@ -1,5 +1,6 @@
 import { checkEnvironment } from "@/config/apiUrl";
 import { imageUrl } from "@/config/apiUrl";
+import { formatDate } from "@/lib/dateFunction";
 
 export default async function Page({ params }) {
   async function getPortfolioByID(id) {
@@ -15,96 +16,84 @@ export default async function Page({ params }) {
     const res = await fetch(`${checkEnvironment()}/api/users/${id}`, {
       cache: "no-store",
     });
-    const { data } = await res.json();
-
-    return data;
+    const vendor = await res.json();
+    return vendor;
   }
 
   const { id } = params;
   const portfolio = await getPortfolioByID(id);
-  const gambar_pendukung = portfolio.gambar_pendukung;
-  const gambarArray = JSON.parse(gambar_pendukung);
-  const vendor = await getVendorById(portfolio.vendor_id);
+  const gambarArray = JSON.parse(portfolio.gambar_pendukung);
+  const { data } = await getVendorById(portfolio.vendor_id);
   const {
     profile: [profileObject],
-  } = vendor;
-  const elements = [];
-  const slider = [];
+  } = data;
+  console.log(profileObject);
 
+  console.log(profileObject);
+
+  const imageElement = [];
+  const sliderElement = [];
   for (let i = 0; i < gambarArray.length; i++) {
-    elements.push(
-      <div key={i} id={"item" + (i + 2)} className="carousel-item w-full">
+    imageElement.push(
+      <div key={i + 2} id={"item" + (i + 2)} className="carousel-item w-full">
         <img
-          src={imageUrl + "portfolio/" + portfolio.id + "/" + gambarArray[i]}
+          src={imageUrl + "portfolio/" + id + "/" + gambarArray[i]}
           className="w-full"
         />
       </div>
     );
-    slider.push(
-      <a key={i} href={"#item" + (i + 2)} className="btn btn-xs">
+    sliderElement.push(
+      <a key={i + 2} href={"#item" + (i + 2)} className="btn btn-xs">
         {i + 2}
       </a>
     );
   }
 
   return (
-    <div>
+    <>
+      <h2 className="text-2xl font-bold mt-4">{portfolio.judul}</h2>
+      <p className="text-sm mb-4 ">{formatDate(portfolio.tanggal)}</p>
       <div className="bg-white p-6 shadow-md rounded-lg">
-        <h2 className="text-2xl font-bold mt-4">{portfolio.judul}</h2>
-        <p>20 Maret 2023 - Kota Semarang</p>
-        <div className="flex justify-center mt-4">
-          <div className="carousel w-[500px] h-[300px]">
+        <div className="flex justify-center">
+          <div className="carousel w-[28rem] h-[16rem]">
             <div id="item1" className="carousel-item w-full">
               <img
-                src={
-                  imageUrl +
-                  "portfolio/" +
-                  portfolio.id +
-                  "/" +
-                  portfolio.gambar
-                }
+                src={imageUrl + "portfolio/" + id + "/" + portfolio.gambar}
                 className="w-full"
               />
             </div>
-            {elements}
+            {imageElement}
           </div>
         </div>
         <div className="flex justify-center w-full py-2 gap-2">
           <a href="#item1" className="btn btn-xs">
             1
           </a>
-          {slider}
+          {sliderElement}
         </div>
-        <div className="mb-4">
-          <h3 className="text-lg font-semibold">Details</h3>
-          <p>{portfolio.deskripsi}</p>
-        </div>
-        <div className="mb-4">
-          <div className="profile-avatar flex items-center justify-between">
-            <div className="flex flex-row items-center">
-              <div className="avatar mr-4">
-                <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img
-                    className="object-contain"
-                    src="https://www.bridestory.com/_nuxt/img/bs_logo_dark-HJ6X7hQcPce7eceff4fdd3988b58ef900028ffc0a.webp"
-                    alt="Rafiqur Rahman"
-                  />
-                </div>
-              </div>
-              <div className="ml-4">
-                <h2 className="text-md font-bold">{vendor.nama}</h2>
-                <p className="text-sm">{profileObject.lokasi}</p>
+        <h2 className="text-xl font-bold mb-4">Deskripsi</h2>
+        <p>{portfolio.deskripsi}</p>
+        <div className="mt-4 flex flex-row items-center gap-10">
+          <div className="profile-avatar flex items-center">
+            <div className="avatar mr-4">
+              <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img
+                  className="object-contain"
+                  src="https://www.bridestory.com/_nuxt/img/bs_logo_dark-HJ6X7hQcPce7eceff4fdd3988b58ef900028ffc0a.webp"
+                  alt="Rafiqur Rahman"
+                />
               </div>
             </div>
-            <button className="btn flex flex-row w-64 h-8 min-h-8 border border-gray-300 rounded-lg">
-              <span className="inline text-xs text-gray-600">
-                Lihat Profil Vendor
-              </span>
-            </button>
+            <div>
+              <h2 className="text-sm font-bold">{data.nama}</h2>
+              <p className="text-xs">{profileObject.lokasi}</p>
+            </div>
+          </div>
+          <div className="border border-gray-200 hover:border-pink-300 hover:cursor-pointer rounded-md text-sm text-gray-600 w-44 h-8 text-center flex items-center justify-center">
+            <p>Lihat Profil Vendor</p>
           </div>
         </div>
-        <div className="divider"></div>
       </div>
-    </div>
+    </>
   );
 }
