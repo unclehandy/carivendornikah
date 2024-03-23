@@ -7,7 +7,11 @@ import slugify from "slugify";
 // Handle GET request
 export async function GET() {
     try {
-        const orderDetails = await prisma.orderDetail.findMany();
+        const orderDetails = await prisma.orderDetail.findMany({
+            include:{
+                produk: true,
+            }
+        });
         return NextResponse.json({
             success: true,
             message: "List of order details",
@@ -38,7 +42,7 @@ export async function POST(request) {
                 produk_id: produk_id,
                 user_id: user_id,
                 stat: stat,
-                qty: qty
+                qty: parseInt(qty)
             }
         });
         return NextResponse.json({

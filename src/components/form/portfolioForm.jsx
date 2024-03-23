@@ -1,6 +1,8 @@
 "use client";
+import { useRouter } from "next/navigation";
 
 export const PortfolioForm = () => {
+  const router = useRouter();
   async function handleSubmitPortfolio(formData) {
     const user = JSON.parse(localStorage.getItem("user"));
     const vendor_id = user.id;
@@ -12,6 +14,7 @@ export const PortfolioForm = () => {
       body: formData,
     });
     const data = await res.json();
+    router.push("/dashboard/portfolio")
   }
 
   return (
