@@ -9,6 +9,7 @@ const menuList = [
   {label: "Order History", href: "orderHistory", icon: <ShoppingBag />},
   {label: "Wedding Dream", href: "weddingDream", icon: <BookMarked />},
   {label: "Keranjang", href: "/dashboard-user/keranjang", icon: <Cat />},
+  {label: "Order", href: "/dashboard-user/orderdetail", icon: <Cat />},
 ]
 
 

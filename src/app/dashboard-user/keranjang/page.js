@@ -7,7 +7,9 @@ import toast from 'react-hot-toast';
 
 export default function Keranjang() {
     const [keranjangData, setKeranjangData] = useState([]);
+    const [totalHarga, setTotalHarga] = useState(0); 
     const router = useRouter();
+    const user_id = JSON.parse(localStorage.getItem("user"));
 
     async function fetchKeranjang() {
         try {
@@ -29,6 +31,14 @@ export default function Keranjang() {
     }, []);
 
 
+    useEffect(() => {
+        // Hitung total harga setiap kali data keranjang berubah
+        if (keranjangData.data) {
+            const total = keranjangData.data.reduce((acc, item) => acc + item.produk.harga, 0);
+            setTotalHarga(total);
+        }
+    }, [keranjangData]);
+
     console.log(keranjangData.data)
     const handleDelete = async (id) => {
         try {
@@ -42,6 +52,71 @@ export default function Keranjang() {
            fetchKeranjang();
         } catch (error) {
             console.error('Error deleting item from keranjang:', error);
+        }
+    };
+
+
+    const handleCheckout = async () => {
+        try {
+            // Menyimpan data order
+            const orderResponse = await fetch('http://localhost:3000/api/order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user_id: user_id.id, // Sesuaikan dengan user yang sedang login
+                    date_order: new Date().toISOString(),
+                }),
+            });
+
+            if (!orderResponse.ok) {
+                throw new Error('Failed to create order');
+            }
+
+            const orderData = await orderResponse.json();
+
+            const orderId = orderData.data.id 
+
+            if (!orderId) {
+                throw new Error('Failed to get order ID');
+            }
+
+            // Menyimpan data order detail untuk setiap item di keranjang
+            for (const item of keranjangData.data) {
+
+                console.log("data order");
+                console.log(orderData.data.id);
+                const orderDetailResponse = await fetch('http://localhost:3000/api/order_detail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        order_id: orderId,
+                        user_id: user_id.id, // Sesuaikan dengan user yang sedang login
+                        produk_id: item.produk.id,
+                        stat: "yes",
+                        qty: 1,
+                    }),
+                });
+
+                if (!orderDetailResponse.ok) {
+                    throw new Error('Failed to create order detail');
+                }
+
+                await fetch(`http://localhost:3000/api/keranjang/${item.id}`, {
+                    method: 'DELETE',
+                });
+            }
+
+            // Jika berhasil, membersihkan keranjang
+            setKeranjangData([]);
+            setTotalHarga(0);
+            toast.success('Order placed successfully!');
+        } catch (error) {
+            console.error('Error placing order:', error);
+            toast.error('Failed to place order');
         }
     };
 
@@ -78,6 +153,11 @@ export default function Keranjang() {
             </div>
             ))}
             </div>
+
+            <div className='text-2xl'>Total Harga: {totalHarga}</div> {/* Menampilkan total harga */}
+            <button className="btn btn-primary mt-4" onClick={handleCheckout}>Checkout</button>
+
+            
         </TemplateUser>
     );
 }
