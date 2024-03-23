@@ -6,6 +6,7 @@ import { useAtom } from "jotai";
 import { portfolioAtom } from "@/components/Atom/portfolioAtom";
 import { formatDate } from "@/lib/dateFunction";
 import { imageUrl } from "@/config/apiUrl";
+import Link from "next/link";
 
 export const PortfolioCard = () => {
   const [portfolioData, setPortfolioData] = useAtom(portfolioAtom);
@@ -52,10 +53,12 @@ export const PortfolioCard = () => {
                     <p className="text-[10px] text-gray-500">@bridestory</p>
                   </div>
                 </div>
+                <Link href={"/dashboard/portfolio/" + id}>
                 <div className="flex gap-2 items-center p-2 rounded-sm">
                   <span className="text-sm">Selengkapnya</span>
                   <ArrowRight size={16} />
                 </div>
+                </Link>
               </div>
             </div>
             <div className="relative h-52 w-72">

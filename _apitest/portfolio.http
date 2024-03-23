@@ -1,1 +1,4 @@
 GET http://localhost:3000/api/portfolio
+
+###
+GET http://localhost:3000/api/portfolio/TEy1HYtckTkkLL8rD3HtG
