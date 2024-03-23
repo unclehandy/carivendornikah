@@ -1,9 +1,11 @@
 import Link from "next/link"
 
-import {UserRound, ShoppingBag, BookMarked} from "lucide-react";
+import {Home, UserRound, ShoppingBag, BookMarked, Cat} from "lucide-react";
 
 const menuList = [
+  {label: "Home", href: "/", icon: <Home />},
   {label: "Profile", href: "profile", icon: <UserRound />},
+  {label: "Katalog Produk", href: "profile", icon: <Cat />},
   {label: "Order History", href: "orderHistory", icon: <ShoppingBag />},
   {label: "Wedding Dream", href: "weddingDream", icon: <BookMarked />},
 ]

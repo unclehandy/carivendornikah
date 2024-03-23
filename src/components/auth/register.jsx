@@ -12,18 +12,19 @@ export const Register = () => {
     nama: "",
     email: "",
     phone: "",
-    role: "user",
+    role: "",
     password: "",
   });
 
   function handleChangeInput(event) {
     setRegisterData({ ...registerData, [event.target.name]: event.target.value });
+    console.log(registerData);
   }
 
   async function handleRegister() {
     const { nama, email, phone, role, password } = registerData;
 
-    if (!nama || !email || !phone || !password ) {
+    if (!nama || !email || !phone || !password || !role) {
       console.log("All fields must be filled");
       return;
     }
@@ -50,6 +51,11 @@ export const Register = () => {
       <div className="space-y-3">
       <input name="nama" placeholder="nama lengkap" onChange={handleChangeInput} className="input input-bordered w-full max-w-xs"/>
       <input name="email" placeholder="alamat email" onChange={handleChangeInput} className="input input-bordered w-full max-w-xs"/>
+      <select name="role" onChange={handleChangeInput} className="select select-bordered w-full max-w-xs">
+        <option value="">Pilih Role/Peran</option>
+        <option value="user">User</option>
+        <option value="vendor">Vendor</option>
+      </select>
       <input name="phone" placeholder="no telepon" onChange={handleChangeInput} className="input input-bordered w-full max-w-xs"/>
       <input name="password" type="password" placeholder="kata sandi" onChange={handleChangeInput} className="input input-bordered w-full max-w-xs"/>
       <button className="btn-md btn btn-neutral" onClick={handleRegister}>
