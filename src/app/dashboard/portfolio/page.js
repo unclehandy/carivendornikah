@@ -1,8 +1,19 @@
 import { Portfolio } from "@/components/portfolio";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+import { checkEnvironment } from "@/config/apiUrl";
 
-export default function Home() {
+async function getPortfolio() {
+  const res = await fetch(`${checkEnvironment()}/api/portfolio`, {
+    cache: "no-cache",
+  });
+  const { vendorPortfolio } = await res.json();
+  return vendorPortfolio;
+}
+
+export default async function Home() {
+  const portfolios = await getPortfolio();
+
   return (
     <main className="bg-white">
       <div className="flex flex-row items-center gap-4">
@@ -16,7 +27,7 @@ export default function Home() {
           </button>
         </Link>
       </div>
-      <Portfolio />
+      <Portfolio listPortfolio={portfolios}/>
     </main>
   );
 }

@@ -16,6 +16,7 @@
     "boring-avatar": "^1.7.0",
     "boring-avatars": "^1.10.1",
     "jose": "^5.2.3",
+    "jotai": "^2.7.1",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.358.0",

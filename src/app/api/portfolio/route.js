@@ -3,25 +3,20 @@ import prisma from "../../../../prisma/client";
 import { nanoid } from "nanoid";
 import slugify from "slugify";
 import Cookies from "js-cookie";
-import { stringToDate } from "@/lib/stringToDate";
+import { stringToDate } from "@/lib/dateFunction";
 import { uploadFile } from "@/lib/uploadFile";
 
 export async function GET(req) {
-  const user_id = Cookies.get("id");
+  const vendor_id = Cookies.get("id");
 
   try {
     const vendorPortfolio = await prisma.portfolio.findMany({
       where: {
-        user_id,
+        vendor_id,
       },
     });
     return NextResponse.json(
-      {
-        success: true,
-        message: "Portfolio berhasil diambil",
-        data: vendorPortfolio,
-      },
-      {
+      { vendorPortfolio },{
         status: 200,
       }
     );

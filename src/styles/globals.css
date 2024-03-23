@@ -37,7 +37,7 @@
 }
 
 .portfolio-card {
-    @apply rounded-lg p-8 pb-6 flex flex-row gap-24 shadow-lg;
+    @apply rounded-lg p-8 pb-6 flex flex-row gap-24 shadow-lg h-[16rem] mb-2;
 }
 
 .debug-layout {
