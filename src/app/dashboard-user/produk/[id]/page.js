@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react';
 import { TemplateUser } from "@/components/templateUser";
+import { checkEnvironment } from '@/config/apiUrl';
 import toast from "react-hot-toast";
 import { checkEnvironment } from '@/config/apiUrl';
 import Cookies from "js-cookie";
@@ -86,7 +87,7 @@ export default function DetailProduk({params}) {
                 <div className='flex flex-row gap-6'>
                 <div className='w-1/3'>
                 <img
-                src={`https://nikahdevscale.s3.ap-south-1.amazonaws.com/products/${produkData.user_id}/${produkData.gambar}`}
+                src={`https://nikahapp.s3.ap-southeast-1.amazonaws.com/products/${produkData.user_id}/${produkData.gambar}`}
                className='rounded'
               />
               </div>

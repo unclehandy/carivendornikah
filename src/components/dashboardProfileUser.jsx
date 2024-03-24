@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { ModalUser } from "./modalUser";
 
+
 export const DashboardProfileUser =({dataUser}) => {
   const [user, setUser] = useState (null);
 
@@ -15,6 +16,7 @@ export const DashboardProfileUser =({dataUser}) => {
   function handleLogout () {
     localStorage.removeItem("user");
     Cookies.remove("token");
+    Cookies.remove("id");
     router.push("/auth/login");
 
   }

@@ -2,11 +2,12 @@
 import { useEffect, useState } from 'react';
 import { TemplateUser } from '@/components/templateUser';
 import { checkEnvironment } from '@/config/apiUrl';
+import { useRouter } from 'next/navigation';
 
 export default function OrderDetail() {
     const [orderDetails, setOrderDetails] = useState([]);
 
-
+    const router = useRouter();
     const fetchOrderDetails = async () => {
         try {
             const response = await fetch(`${checkEnvironment()}/api/order_detail`);
@@ -27,6 +28,7 @@ export default function OrderDetail() {
 
         fetchOrderDetails();
     }, []);
+    router.push("/dashboard-user/orderdetail");
 
     return (
         <TemplateUser>

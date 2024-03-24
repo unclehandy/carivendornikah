@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import { checkEnvironment } from '@/config/apiUrl';
 
 export default function Keranjang() {
     const [keranjangData, setKeranjangData] = useState([]);
@@ -133,7 +134,7 @@ export default function Keranjang() {
             >
               <figure  className=" h-48 w-full">
                 <img
-                  src={`https://nikahdevscale.s3.ap-south-1.amazonaws.com/products/${item.produk.user_id}/${item.produk.gambar}`}
+                  src={`https://nikahapp.s3.ap-southeast-1.amazonaws.com/products/${item.produk.user_id}/${item.produk.gambar}`}
                 
                  
                  
