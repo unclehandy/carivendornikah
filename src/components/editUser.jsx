@@ -2,7 +2,7 @@
 import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
+import {UserRound } from "lucide-react";
 
 export const EditUser = ({user}) => {
   const [id, setId] = useState ("");
@@ -80,7 +80,7 @@ export const EditUser = ({user}) => {
   return (
 
     <main className="space-y-2 rounded-lg p-5 max-w-lg m-auto">
-           <h1>Edit Pengguna  </h1>
+           <div className="flex gap-2"><UserRound /> <h1>Edit Pengguna  </h1></div> 
            <div className="space-y-3 max-w-xs">
              <input name="nama" placeholder="nama lengkap"  value={nama} onChange={(e)=> setNama(e.target.value)} className="input input-bordered w-full max-w-xs"/>
              <input name="email" placeholder="alamat email" value={email} disabled onChange={(e)=> setEmail(e.target.value)} className="input input-bordered w-full max-w-xs"/>
