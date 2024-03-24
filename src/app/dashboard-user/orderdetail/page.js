@@ -1,13 +1,13 @@
-"use client"
+"use client";
 import { useEffect, useState } from 'react';
 import { TemplateUser } from '@/components/templateUser';
 import { checkEnvironment } from '@/config/apiUrl';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; // Changed next/navigation to next/router
 
 export default function OrderDetail() {
     const [orderDetails, setOrderDetails] = useState([]);
-
     const router = useRouter();
+
     const fetchOrderDetails = async () => {
         try {
             const response = await fetch(`${checkEnvironment()}/api/order_detail`);
@@ -21,14 +21,17 @@ export default function OrderDetail() {
         }
     };
 
-    console.log(orderDetails);
     useEffect(() => {
         // Lakukan pemanggilan API untuk mendapatkan detail pesanan
- 
-
         fetchOrderDetails();
     }, []);
-    router.push("/dashboard-user/orderdetail");
+
+    useEffect(() => {
+        // After fetching order details, navigate to "/dashboard-user/orderdetail"
+        if (orderDetails.length > 0) {
+            router.push("/dashboard-user/orderdetail");
+        }
+    }, [orderDetails, router]);
 
     return (
         <TemplateUser>

@@ -37,7 +37,7 @@ export default async function Page({ params }) {
     imageElement.push(
       <div key={i + 2} id={"item" + (i + 2)} className="carousel-item w-full">
         <img
-          src={imageUrl + "portfolio/" + id + "/" + gambarArray[i]}
+          src={imageUrl + "/portfolio/" + id + "/" + gambarArray[i]}
           className="w-full"
         />
       </div>
@@ -58,7 +58,7 @@ export default async function Page({ params }) {
           <div className="carousel w-[28rem] h-[16rem]">
             <div id="item1" className="carousel-item w-full">
               <img
-                src={imageUrl + "portfolio/" + id + "/" + portfolio.gambar}
+                src={imageUrl + "/portfolio/" + id + "/" + portfolio.gambar}
                 className="w-full"
               />
             </div>

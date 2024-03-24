@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
-import { checkEnvironment } from '@/config/apiUrl';
 
 export default function Keranjang() {
     const [keranjangData, setKeranjangData] = useState([]);

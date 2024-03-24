@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { TemplateUser } from "@/components/templateUser";
 import { checkEnvironment } from '@/config/apiUrl';
 import toast from "react-hot-toast";
-import { checkEnvironment } from '@/config/apiUrl';
 import Cookies from "js-cookie";
 
 export default function DetailProduk({params}) {

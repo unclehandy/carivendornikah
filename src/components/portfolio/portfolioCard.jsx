@@ -16,7 +16,7 @@ export const PortfolioCard = () => {
     <>
       {portfolioData.map(
         ({ id, judul, lokasi, tanggal, deskripsi, gambar }) => {
-          let image = `${imageUrl}portfolio/${id}/${gambar}`;
+          let image = `${imageUrl}/portfolio/${id}/${gambar}`;
           return (
             <div key={id} className="portfolio-card bg-ivory">
               <div className="flex flex-col h-40 w-[720px] justify-between">
