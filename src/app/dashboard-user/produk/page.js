@@ -1,12 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 import { TemplateUser } from "@/components/templateUser";
-import { UserRound } from "lucide-react";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { checkEnvironment } from "@/config/apiUrl";
+
 
 export default function Produk() {
   const [produkData, setProdukData] = useState([]);
+  
+  // console.log (`${process.env.BUCKET}`)
 
   useEffect(() => {
     async function fetchProduk() {
@@ -51,6 +54,8 @@ export default function Produk() {
       console.error('Error adding to cart:', error);
       // Handle error, e.g., show an error message
     }
+
+    console.log(produkData);
   };
 
 
@@ -64,7 +69,7 @@ export default function Produk() {
           >
             <figure  className=" h-48 w-full">
               <img
-                src={`https://nikahdevscale.s3.ap-south-1.amazonaws.com/products/${produk.user_id}/${produk.gambar}`}
+                src={`https://nikahapp.s3.ap-southeast-1.amazonaws.com/products/${produk.user_id}/${produk.gambar}`}
               
                
                

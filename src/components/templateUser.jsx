@@ -1,15 +1,15 @@
 import Link from "next/link"
 
-import {Home, UserRound, ShoppingBag, BookMarked, Cat} from "lucide-react";
+import {Home, UserRound, ShoppingBag, BookMarked, Grid, ShoppingCart, SquareGanttChart } from "lucide-react";
 
 const menuList = [
   {label: "Home", href: "/", icon: <Home />},
   {label: "Profile", href: "profile", icon: <UserRound />},
-  {label: "Katalog Produk", href: "/dashboard-user/produk", icon: <Cat />},
+  {label: "Katalog Produk", href: "/dashboard-user/produk", icon: <Grid />},
   {label: "Order History", href: "orderHistory", icon: <ShoppingBag />},
   {label: "Wedding Dream", href: "weddingDream", icon: <BookMarked />},
-  {label: "Keranjang", href: "/dashboard-user/keranjang", icon: <Cat />},
-  {label: "Order", href: "/dashboard-user/orderdetail", icon: <Cat />},
+  {label: "Keranjang", href: "/dashboard-user/keranjang", icon: <ShoppingCart />},
+  {label: "Order", href: "/dashboard-user/orderdetail", icon: <SquareGanttChart/>},
 ]
 
 

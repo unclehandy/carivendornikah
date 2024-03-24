@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import { checkEnvironment } from '@/config/apiUrl';
 
 export default function Keranjang() {
     const [keranjangData, setKeranjangData] = useState([]);
@@ -13,7 +14,7 @@ export default function Keranjang() {
 
     async function fetchKeranjang() {
         try {
-            const response = await fetch('http://localhost:3000/api/keranjang');
+            const response = await fetch(`${checkEnvironment()}/api/keranjang`);
             if (!response.ok) {
                 throw new Error('Failed to fetch keranjang data');
             }
@@ -42,7 +43,7 @@ export default function Keranjang() {
     console.log(keranjangData.data)
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/keranjang/${id}`, {
+            const response = await fetch(`${checkEnvironment()}/api/keranjang/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {
@@ -59,7 +60,7 @@ export default function Keranjang() {
     const handleCheckout = async () => {
         try {
             // Menyimpan data order
-            const orderResponse = await fetch('http://localhost:3000/api/order', {
+            const orderResponse = await fetch(`${checkEnvironment()}/api/order`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -87,7 +88,7 @@ export default function Keranjang() {
 
                 console.log("data order");
                 console.log(orderData.data.id);
-                const orderDetailResponse = await fetch('http://localhost:3000/api/order_detail', {
+                const orderDetailResponse = await fetch(`${checkEnvironment()}/api/order_detail`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -105,7 +106,7 @@ export default function Keranjang() {
                     throw new Error('Failed to create order detail');
                 }
 
-                await fetch(`http://localhost:3000/api/keranjang/${item.id}`, {
+                await fetch(`api/keranjang/${item.id}`, {
                     method: 'DELETE',
                 });
             }
@@ -130,7 +131,7 @@ export default function Keranjang() {
             >
               <figure  className=" h-48 w-full">
                 <img
-                  src={`https://nikahdevscale.s3.ap-south-1.amazonaws.com/products/${item.produk.user_id}/${item.produk.gambar}`}
+                  src={`https://nikahapp.s3.ap-southeast-1.amazonaws.com/products/${item.produk.user_id}/${item.produk.gambar}`}
                 
                  
                  
