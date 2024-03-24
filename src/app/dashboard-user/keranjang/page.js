@@ -1,16 +1,18 @@
 "use client"
 import { TemplateUser } from '@/components/templateUser';
+import { checkEnvironment } from '@/config/apiUrl';
 import { useRouter } from 'next/navigation';
+import Cookies from "js-cookie";
 
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
-import { checkEnvironment } from '@/config/apiUrl';
 
 export default function Keranjang() {
     const [keranjangData, setKeranjangData] = useState([]);
     const [totalHarga, setTotalHarga] = useState(0); 
     const router = useRouter();
-    const user_id = JSON.parse(localStorage.getItem("user"));
+    // const user_id = JSON.parse(localStorage.getItem("user"));
+    const user_id = Cookies.get("id");
 
     async function fetchKeranjang() {
         try {
@@ -106,7 +108,7 @@ export default function Keranjang() {
                     throw new Error('Failed to create order detail');
                 }
 
-                await fetch(`api/keranjang/${item.id}`, {
+                await fetch(`${checkEnvironment()}/api/keranjang/${item.id}`, {
                     method: 'DELETE',
                 });
             }

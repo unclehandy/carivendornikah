@@ -16,7 +16,7 @@ export const PortfolioCard = () => {
     <>
       {portfolioData.map(
         ({ id, judul, lokasi, tanggal, deskripsi, gambar }) => {
-          let image = `${imageUrl}portfolio/${id}/${gambar}`;
+          let image = `${imageUrl}/portfolio/${id}/${gambar}`;
           return (
             <div key={id} className="portfolio-card bg-ivory">
               <div className="flex flex-col h-40 w-[720px] justify-between">
@@ -61,6 +61,12 @@ export const PortfolioCard = () => {
                     </Link>
                   </div>
                 </div>
+                <Link href={"/dashboard/portfolio/" + id}>
+                <div className="flex gap-2 items-center p-2 rounded-sm">
+                  <span className="text-sm">Selengkapnya</span>
+                  <ArrowRight size={16} />
+                </div>
+                </Link>
               </div>
               <div className="relative h-52 w-72">
                 <Image

@@ -1,16 +1,12 @@
-import prisma from "../../../../../prisma/client";
 import { NextResponse } from "next/server";
+import prisma from "../../../../../prisma/client";
 
 export async function GET(request, { params }) {
-  const id = params.id;
+  const { id } = params;
   const portfolio = await prisma.portfolio.findUnique({
     where: {
-      id: id,
+      id,
     },
   });
-  return NextResponse.json(
-    { portfolio },{
-      status: 200,
-    }
-  );
+  return NextResponse.json({ portfolio }, { status: 200 });
 }

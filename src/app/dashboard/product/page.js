@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation"; // Import useRouter untuk navigasi
 import { checkEnvironment } from "@/config/apiUrl";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 export default function Produk() {
   const router = useRouter(); // Inisialisasi useRouter
@@ -16,8 +17,9 @@ export default function Produk() {
   const [kategoriOptions, setKategoriOptions] = useState([]);
   const [featuredImagePreview, setFeaturedImagePreview] = useState(null);
 
-  const user_id = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("user")) || {} : {};
-  console.log(user_id.id);
+  // const user_id = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("user")) || {} : {};
+  const user_id = Cookies.get("id");
+  console.log(user_id);
 
   function createFeaturedImagePreview(file) {
     if (file) {
@@ -34,7 +36,7 @@ export default function Produk() {
     nama: "",
     harga: 0,
     kategori_id: "",
-    user_id: user_id.id,
+    user_id: user_id,
     gambar: "",
     deskripsi: "",
   });
@@ -100,7 +102,7 @@ export default function Produk() {
         formData.append('nama', newProduk.nama);
         formData.append('harga', newProduk.harga);
         formData.append('kategori_id', newProduk.kategori_id);
-        formData.append('user_id', user_id.id);
+        formData.append('user_id', user_id);
         formData.append('gambar', newProduk.gambar);
         formData.append('deskripsi', newProduk.deskripsi);
 
