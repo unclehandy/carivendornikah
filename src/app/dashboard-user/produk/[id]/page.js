@@ -10,7 +10,7 @@ export default function DetailProduk({params}) {
     const [loading, setLoading] = useState(true);
 
     // const user_id = JSON.parse(localStorage.getItem("user"));
-    const vendor_id = Cookies.get("id");
+    const user_id = Cookies.get("id");
 
 
     const id=params.id;
