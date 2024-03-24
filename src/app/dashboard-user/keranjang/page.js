@@ -2,6 +2,7 @@
 import { TemplateUser } from '@/components/templateUser';
 import { checkEnvironment } from '@/config/apiUrl';
 import { useRouter } from 'next/navigation';
+import Cookies from "js-cookie";
 
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
@@ -10,7 +11,8 @@ export default function Keranjang() {
     const [keranjangData, setKeranjangData] = useState([]);
     const [totalHarga, setTotalHarga] = useState(0); 
     const router = useRouter();
-    const user_id = JSON.parse(localStorage.getItem("user"));
+    // const user_id = JSON.parse(localStorage.getItem("user"));
+    const user_id = Cookies.get("id");
 
     async function fetchKeranjang() {
         try {

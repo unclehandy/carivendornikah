@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation"; // Import useRouter untuk navigasi
 import { checkEnvironment } from "@/config/apiUrl";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 export default function Produk() {
   const router = useRouter(); // Inisialisasi useRouter
@@ -16,7 +17,8 @@ export default function Produk() {
   const [kategoriOptions, setKategoriOptions] = useState([]);
   const [featuredImagePreview, setFeaturedImagePreview] = useState(null);
 
-  const user_id = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("user")) || {} : {};
+  // const user_id = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("user")) || {} : {};
+  const user_id = Cookies.get("id");
   console.log(user_id.id);
 
   function createFeaturedImagePreview(file) {
