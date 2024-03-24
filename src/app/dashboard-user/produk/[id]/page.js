@@ -2,12 +2,15 @@
 import { useState, useEffect } from 'react';
 import { TemplateUser } from "@/components/templateUser";
 import toast from "react-hot-toast";
+import { checkEnvironment } from '@/config/apiUrl';
+import Cookies from "js-cookie";
 
 export default function DetailProduk({params}) {
     const [produkData, setProdukData] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const user_id = JSON.parse(localStorage.getItem("user"));
+    // const user_id = JSON.parse(localStorage.getItem("user"));
+    const user_id = Cookies.get("id");
 
 
     const id=params.id;

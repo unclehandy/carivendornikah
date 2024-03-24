@@ -1,6 +1,8 @@
 "use client"
 import { TemplateUser } from '@/components/templateUser';
+import { checkEnvironment } from '@/config/apiUrl';
 import { useRouter } from 'next/navigation';
+import Cookies from "js-cookie";
 
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
@@ -9,11 +11,12 @@ export default function Keranjang() {
     const [keranjangData, setKeranjangData] = useState([]);
     const [totalHarga, setTotalHarga] = useState(0); 
     const router = useRouter();
-    const user_id = JSON.parse(localStorage.getItem("user"));
+    // const user_id = JSON.parse(localStorage.getItem("user"));
+    const user_id = Cookies.get("id");
 
     async function fetchKeranjang() {
         try {
-            const response = await fetch('http://localhost:3000/api/keranjang');
+            const response = await fetch(`${checkEnvironment()}/api/keranjang`);
             if (!response.ok) {
                 throw new Error('Failed to fetch keranjang data');
             }
@@ -42,7 +45,7 @@ export default function Keranjang() {
     console.log(keranjangData.data)
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/keranjang/${id}`, {
+            const response = await fetch(`${checkEnvironment()}/api/keranjang/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {
@@ -59,7 +62,7 @@ export default function Keranjang() {
     const handleCheckout = async () => {
         try {
             // Menyimpan data order
-            const orderResponse = await fetch('http://localhost:3000/api/order', {
+            const orderResponse = await fetch(`${checkEnvironment()}/api/order`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -87,7 +90,7 @@ export default function Keranjang() {
 
                 console.log("data order");
                 console.log(orderData.data.id);
-                const orderDetailResponse = await fetch('http://localhost:3000/api/order_detail', {
+                const orderDetailResponse = await fetch(`${checkEnvironment()}/api/order_detail`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -105,7 +108,7 @@ export default function Keranjang() {
                     throw new Error('Failed to create order detail');
                 }
 
-                await fetch(`http://localhost:3000/api/keranjang/${item.id}`, {
+                await fetch(`${checkEnvironment()}/api/keranjang/${item.id}`, {
                     method: 'DELETE',
                 });
             }
